@@ -42,7 +42,7 @@ async def chatgpt_response(prompt):
 
     vitalina_history.append({
         "role": "assistant",
-        "content": response,
+        "content": response.choices[0].message.content,
         "name": "Vitalina2222"
     })
 

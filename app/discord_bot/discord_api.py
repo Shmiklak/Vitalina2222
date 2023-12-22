@@ -24,7 +24,7 @@ class Vitalina(discord.Client):
 
                 print(bcolors.OKGREEN, "ТЕКУЩАЯ ВЕРОЯТНОСТЬ: ", random_event, bcolors.ENDC)
 
-                if random_event > 70:
+                if random_event > 75:
                     gif = selectRandomGif()
                     await message.channel.send(gif)
                     return True
