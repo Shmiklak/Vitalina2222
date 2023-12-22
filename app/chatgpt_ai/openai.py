@@ -7,7 +7,7 @@ load_dotenv()
 
 client = AsyncOpenAI(
     api_key=os.getenv('OPENAI_TOKEN'),
-    base_url=os.getenv('OPENAI_URL')
+    # base_url=os.getenv('OPENAI_URL')
 )
 
 with open('vitalina.txt', encoding = 'utf-8', mode = 'r') as file:
