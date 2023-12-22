@@ -3,7 +3,7 @@ import discord
 import os
 import random
 from app.chatgpt_ai.openai import chatgpt_response
-from app.vitalina_utilities.utilities import selectRandomGif
+from app.vitalina_utilities.utilities import selectRandomGif, bcolors
 
 load_dotenv()
 
@@ -17,22 +17,27 @@ class Vitalina(discord.Client):
         if message.author == self.user:
             return False
         
-        for text in ['виталин', 'vitalin', '1187685558382772254']:
+        for text in ['вита', 'vita', '1187685558382772254']:
             if text in message.content.lower():
 
                 random_event = random.randint(0, 100)
 
-                if random_event > 50:
+                print(bcolors.OKGREEN, "ТЕКУЩАЯ ВЕРОЯТНОСТЬ: ", random_event, bcolors.ENDC)
+
+                if random_event > 70:
                     gif = selectRandomGif()
                     await message.channel.send(gif)
                     return True
+                
+                if random_event > 98:
+                    await message.channel.send(f"Собакам слова не давали.")
 
 
-                # if message.author.id == '395117543406436353':
+                if message.author.id == '138957703853768705':
                 # # if message.author.id == '305361927415136258':
-                #     if random_event < 50:
-                #         await message.channel.send(f"https://tenor.com/view/mother-sgnila-cute-dance-moves-bear-gif-16312770")
-                #         return True
+                    # if random_event < 90:
+                        await message.channel.send(f"https://tenor.com/view/mother-sgnila-cute-dance-moves-bear-gif-16312770")
+                        return True
 
                 bot_response = await chatgpt_response(message.content)
                 await message.channel.send(bot_response)
