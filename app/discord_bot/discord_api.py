@@ -3,7 +3,7 @@ import discord
 import os
 import random
 from app.chatgpt_ai.openai import chatgpt_response
-from app.vitalina_utilities.utilities import selectRandomGif, bcolors, selectRandomVitas
+from app.vitalina_utilities.utilities import selectRandomGif, bcolors, selectRandomVitas, selectRandomShrine
 
 load_dotenv()
 
@@ -49,6 +49,19 @@ class Vitalina(discord.Client):
 
                 if message.content == "Виталина, что ты умеешь?":
                     await message.channel.send(f"Привет! Я могу отвечать на вопросы, поддерживать беседу и просто развлекать.")
+                    return True
+
+                if message.content == "Виталина, у нас новенькие":
+                    await message.channel.send(f"Привет! Основная информация по тому или иному каналу указана в его шапке! Если у тебя возникли вопросы, не стесняйся задавать их в чатике, а теперь - вперед навстречу ярким эмоциям! :pepeBusiness:")
+                    return True
+
+                if message.content == "Виталина, ранкни карту":
+                    await message.channel.send(f"https://docs.google.com/forms/d/e/1FAIpQLSdn1i6C44nSaxSQRyEeL3_jvXrxFn-U0hAfxUkTYIudatmiTA/viewform?usp=sf_link")
+                    return True
+
+                if message.content == "Виталина, скинь смешнявку":
+                    shrine = selectRandomShrine()
+                    await message.channel.send(shrine)
                     return True
 
                 if message.content == "Виталина, витас":

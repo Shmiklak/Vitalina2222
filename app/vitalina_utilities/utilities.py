@@ -7,12 +7,19 @@ def selectRandomGif():
     random_gif = random.randint(0, len(gifs))
     return gifs[random_gif]
 
-with open('vitas_messages', encoding = 'utf-8', mode = 'r') as file:
+with open('vitas_messages.txt', encoding = 'utf-8', mode = 'r') as file:
     photos = [line.rstrip() for line in file]
 
 def selectRandomVitas():
     random_vitas = random.randint(0, len(photos))
     return photos[random_vitas]
+
+with open('shrine.txt', encoding = 'utf-8', mode = 'r') as file:
+    shrine = [line.rstrip() for line in file]
+
+def selectRandomShrine():
+    random_shrine = random.randint(0, len(shrine))
+    return shrine[random_shrine]
 
 class bcolors:
     HEADER = '\033[95m'
