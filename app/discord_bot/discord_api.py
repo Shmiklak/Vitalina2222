@@ -65,7 +65,7 @@ class Vitalina(discord.Client):
             await message.channel.send(f"Пока перерыв расскажу лайфхак, в бауманке придумали такую хуйню, можно пельмени не варить а употреблять прямо так, замороженые, можно перед парами пельмень аккуратно вставить в анус и идти спокойно, сразу в кишку поступают белки там, углеводы, жиры, под конец курса можно было по 5-6 пельменей помещать")
             return True
 
-        if [f'<!@1187685558382772254>'] in message.content:
+        if '<!@1187685558382772254>' in message.content:
             if random_event > 90:
                 await message.channel.send(f"https://tenor.com/view/chungus-pinged-ben-shapiro-discord-big-gif-21424212")
         
