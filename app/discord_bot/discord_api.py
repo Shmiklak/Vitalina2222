@@ -15,7 +15,7 @@ consecutive_messages = 0
 required_consecutive_messages = 3
 
 
-vitalina_ignore_list = [588434002160123906]
+vitalina_ignore_list = [982193341754122250]
 
 class Vitalina(discord.Client):
     async def on_ready(self):
@@ -72,7 +72,7 @@ class Vitalina(discord.Client):
         
         trigger_vitalina = False
 
-        for text in ['витал', 'vital', '1187685558382772254']:
+        for text in ['вита', 'vita', '1187685558382772254']:
             if text in message.content.lower():
                 trigger_vitalina = True
 
@@ -118,18 +118,20 @@ class Vitalina(discord.Client):
                 await message.channel.send(photos)
                 return True
             
-            if random_event > 75:
-                gif = selectRandomGif()
-                await message.channel.send(gif)
-                return True
-            
             if random_event > 98:
                 await message.channel.send(f"Собакам слова не давали.")
                 return True
 
-            bot_response = await chatgpt_response(message.content)
-            await message.channel.send(bot_response)
+            # if random_event > 75:
+            gif = selectRandomGif()
+            await message.channel.send(gif)
             return True
+            
+            
+
+            # bot_response = await chatgpt_response(message.content)
+            # await message.channel.send(bot_response)
+            # return True
 
 intents = discord.Intents.default()
 intents.message_content = True
