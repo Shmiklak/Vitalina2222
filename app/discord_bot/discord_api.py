@@ -30,7 +30,7 @@ class Vitalina(discord.Client):
             return True
 
         if message.content == "шмик":
-            await message.channel.send(f"Сегодня я вместо него. Чем могу помочь? :pepeBusiness:")
+            await message.channel.send(f"Сегодня я вместо него. Чем могу помочь? <:pepeBusiness:1036987708456845391>")
             return True
         
         global consecutive_messages
@@ -122,16 +122,14 @@ class Vitalina(discord.Client):
                 await message.channel.send(f"Собакам слова не давали.")
                 return True
 
-            # if random_event > 75:
-            gif = selectRandomGif()
-            await message.channel.send(gif)
-            return True
-            
-            
+            if random_event > 75:
+                gif = selectRandomGif()
+                await message.channel.send(gif)
+                return True
 
-            # bot_response = await chatgpt_response(message.content)
-            # await message.channel.send(bot_response)
-            # return True
+            bot_response = await chatgpt_response(message.content)
+            await message.channel.send(bot_response)
+            return True
 
 intents = discord.Intents.default()
 intents.message_content = True
