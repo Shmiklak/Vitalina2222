@@ -20,6 +20,7 @@ vitalina_ignore_list = [982193341754122250]
 class Vitalina(discord.Client):
     async def on_ready(self):
         print("Виталина успешно запустилась на аккаунте: ", self.user)
+        await self.change_presence(activity=discord.Game(name="osu!"))
 
     async def on_message(self, message):
         if message.author == self.user or message.author.id in vitalina_ignore_list:
@@ -61,9 +62,9 @@ class Vitalina(discord.Client):
                 await message.channel.send(f"https://tenor.com/view/mother-sgnila-cute-dance-moves-bear-gif-16312770")
                 return True
             
-        if random_event == 100:
-            await message.channel.send(f"Пока перерыв расскажу лайфхак, в бауманке придумали такую хуйню, можно пельмени не варить а употреблять прямо так, замороженые, можно перед парами пельмень аккуратно вставить в анус и идти спокойно, сразу в кишку поступают белки там, углеводы, жиры, под конец курса можно было по 5-6 пельменей помещать")
-            return True
+        # if random_event == 100:
+        #     await message.channel.send(f"Пока перерыв расскажу лайфхак, в бауманке придумали такую хуйню, можно пельмени не варить а употреблять прямо так, замороженые, можно перед парами пельмень аккуратно вставить в анус и идти спокойно, сразу в кишку поступают белки там, углеводы, жиры, под конец курса можно было по 5-6 пельменей помещать")
+        #     return True
 
         if '1187685558382772254' in message.content:
             if random_event > 50:
@@ -86,6 +87,10 @@ class Vitalina(discord.Client):
         if trigger_vitalina:
             if message.content.lower() == "виталина, ты умеешь мапать?":
                 await message.channel.send(f"О, конечно! Совсем недавно я закончила две свои карты. Можешь оценить? https://cdn.discordapp.com/attachments/1187704983651631174/1188428153299943534/MORGENSHTERN_-_SEL_DEDA.osz https://cdn.discordapp.com/attachments/1187704983651631174/1188428257851363328/Team_Grimoire_-_C18H27NO3.osz")
+                return True
+            
+            if message.content.lower() == "виталина, дейлики" and message.author.id == 138957703853768705:
+                await message.channel.send(f"<@304470215733936148> сделай дейлики шмиклаку пожалуйста")
                 return True
 
             if message.content.lower() == "виталина, голос":
