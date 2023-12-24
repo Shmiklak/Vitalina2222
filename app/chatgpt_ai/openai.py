@@ -46,4 +46,4 @@ async def chatgpt_response(prompt):
         "name": "Vitalina2222"
     })
 
-    return response.choices[0].message.content
+    return response.choices[0].message.content + "<:pepeBusiness:1187822166872436866>"
