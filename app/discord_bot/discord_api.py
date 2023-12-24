@@ -17,34 +17,23 @@ class Vitalina(discord.Client):
         if message.author == self.user:
             return False
         
+        if message.content == "шмик":
+            await message.channel.send(f"Сегодня я вместо него. Чем могу помочь? :pepeBusiness:")
+            return True
+        
+        random_event = random.randint(0, 100)
+        print(bcolors.OKGREEN, "ТЕКУЩАЯ ВЕРОЯТНОСТЬ: ", random_event, bcolors.ENDC)
+
+        if message.author.id == 305361927415136258:
+            if random_event > 80:
+                await message.channel.send(f"https://tenor.com/view/mother-sgnila-cute-dance-moves-bear-gif-16312770")
+                return True
+
         for text in ['вита', 'vita', '1187685558382772254']:
             if text in message.content.lower():
 
-                random_event = random.randint(0, 100)
-
-                print(bcolors.OKGREEN, "ТЕКУЩАЯ ВЕРОЯТНОСТЬ: ", random_event, bcolors.ENDC)
-
-                if random_event > 75:
-                    gif = selectRandomGif()
-                    await message.channel.send(gif)
-                    return True
-                
-                if random_event > 98:
-                    await message.channel.send(f"Собакам слова не давали.")
-
-
-                if message.author.id == '138957703853768705':
-                # # if message.author.id == '305361927415136258':
-                    # if random_event < 90:
-                        await message.channel.send(f"https://tenor.com/view/mother-sgnila-cute-dance-moves-bear-gif-16312770")
-                        return True
-
                 if message.content == "Виталина, голос":
                     await message.channel.send(f"Пушистый здряв")
-                    return True
-
-                if message.content == "шмик":
-                    await message.channel.send(f"Сегодня я вместо него. Чем могу помочь? :pepeBusiness:")
                     return True
 
                 if message.content == "Виталина, что ты умеешь?":
@@ -56,7 +45,7 @@ class Vitalina(discord.Client):
                     return True
 
                 if message.content == "Виталина, ранкни карту":
-                    await message.channel.send(f"https://docs.google.com/forms/d/e/1FAIpQLSdn1i6C44nSaxSQRyEeL3_jvXrxFn-U0hAfxUkTYIudatmiTA/viewform?usp=sf_link")
+                    await message.channel.send(f"Конечно, отправь карту в мою очередь: https://docs.google.com/forms/d/e/1FAIpQLSdn1i6C44nSaxSQRyEeL3_jvXrxFn-U0hAfxUkTYIudatmiTA/viewform?usp=sf_link")
                     return True
 
                 if message.content == "Виталина, скинь смешнявку":
@@ -68,6 +57,14 @@ class Vitalina(discord.Client):
                     photos = selectRandomVitas()
                     await message.channel.send(photos)
                     return True
+                
+                if random_event > 75:
+                    gif = selectRandomGif()
+                    await message.channel.send(gif)
+                    return True
+                
+                if random_event > 98:
+                    await message.channel.send(f"Собакам слова не давали.")
 
                 bot_response = await chatgpt_response(message.content)
                 await message.channel.send(bot_response)
