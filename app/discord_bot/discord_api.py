@@ -79,32 +79,36 @@ class Vitalina(discord.Client):
 
 
         if trigger_vitalina:
-            if message.content == "Виталина, ты умеешь мапать?":
+            if message.content == "виталина, ты умеешь мапать?":
                 await message.channel.send(f"О, конечно! Совсем недавно я закончила две свои карты. Можешь оценить? https://cdn.discordapp.com/attachments/1187704983651631174/1188428153299943534/MORGENSHTERN_-_SEL_DEDA.osz https://cdn.discordapp.com/attachments/1187704983651631174/1188428257851363328/Team_Grimoire_-_C18H27NO3.osz")
                 return True
 
-            if message.content == "Виталина, голос":
+            if message.content == "виталина, голос":
                 await message.channel.send(f"Пушистый здряв")
                 return True
 
-            if message.content == "Виталина, что ты умеешь?":
+            if message.content == "виталина, что ты умеешь?":
                 await message.channel.send(f"Привет! Я могу отвечать на вопросы, поддерживать беседу и просто развлекать.")
                 return True
 
-            if message.content == "Виталина, у нас новенькие":
+            if message.content == "виталина, у нас новенькие":
                 await message.channel.send(f"Привет! Основная информация по тому или иному каналу указана в его шапке! Если у тебя возникли вопросы, не стесняйся задавать их в чатике, а теперь - вперед навстречу ярким эмоциям! <:pepeBusiness:1187822166872436866>")
                 return True
 
-            if message.content == "Виталина, ранкни карту":
+            if message.content == "виталина, ранкни карту":
                 await message.channel.send(f"Конечно, отправь карту в мою очередь: https://docs.google.com/forms/d/e/1FAIpQLSdn1i6C44nSaxSQRyEeL3_jvXrxFn-U0hAfxUkTYIudatmiTA/viewform?usp=sf_link")
                 return True
 
-            if message.content == "Виталина, скинь смешнявку":
+            if message.content == "виталина, скинь свой твиттер":
+                await message.channel.send(f"Держи! - https://twitter.com/vitalina2222?s=21&t=z8Z3tXn69AOEOpiRpmFttg")
+                return True
+
+            if message.content == "виталина, скинь смешнявку":
                 shrine = selectRandomShrine()
                 await message.channel.send(shrine)
                 return True
 
-            if message.content == "Виталина, витас":
+            if message.content == "виталина, витас":
                 photos = selectRandomVitas()
                 await message.channel.send(photos)
                 return True
