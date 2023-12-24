@@ -67,7 +67,7 @@ class Vitalina(discord.Client):
         
         trigger_vitalina = False
 
-        for text in ['вита', 'vita', '1187685558382772254']:
+        for text in ['витал', 'vital', '1187685558382772254']:
             if text in message.content.lower():
                 trigger_vitalina = True
 
