@@ -25,7 +25,7 @@ class Vitalina(discord.Client):
         print(bcolors.OKGREEN, "ТЕКУЩАЯ ВЕРОЯТНОСТЬ: ", random_event, bcolors.ENDC)
 
         if message.author.id == 305361927415136258:
-            if random_event > 80:
+            if random_event > 95:
                 await message.channel.send(f"https://tenor.com/view/mother-sgnila-cute-dance-moves-bear-gif-16312770")
                 return True
 
