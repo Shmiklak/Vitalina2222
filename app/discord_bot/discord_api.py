@@ -14,12 +14,15 @@ recent_messages = []
 consecutive_messages = 0
 required_consecutive_messages = 3
 
+
+vitalina_ignore_list = [588434002160123906]
+
 class Vitalina(discord.Client):
     async def on_ready(self):
         print("Виталина успешно запустилась на аккаунте: ", self.user)
 
     async def on_message(self, message):
-        if message.author == self.user or message.author.id == 588434002160123906:
+        if message.author == self.user or message.author.id in vitalina_ignore_list:
             return False
         
         if isinstance(message.channel, discord.DMChannel):
@@ -58,7 +61,7 @@ class Vitalina(discord.Client):
                 await message.channel.send(f"https://tenor.com/view/mother-sgnila-cute-dance-moves-bear-gif-16312770")
                 return True
             
-        if random_event > 98:
+        if random_event == 100:
             await message.channel.send(f"Пока перерыв расскажу лайфхак, в бауманке придумали такую хуйню, можно пельмени не варить а употреблять прямо так, замороженые, можно перед парами пельмень аккуратно вставить в анус и идти спокойно, сразу в кишку поступают белки там, углеводы, жиры, под конец курса можно было по 5-6 пельменей помещать")
             return True
         
