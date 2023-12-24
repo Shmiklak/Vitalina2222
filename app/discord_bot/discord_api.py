@@ -66,7 +66,7 @@ class Vitalina(discord.Client):
             return True
 
         if '1187685558382772254' in message.content:
-            if random_event > 90:
+            if random_event > 50:
                 await message.channel.send(f"https://tenor.com/view/chungus-pinged-ben-shapiro-discord-big-gif-21424212")
                 return True
         
