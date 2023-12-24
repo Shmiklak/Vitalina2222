@@ -79,6 +79,10 @@ class Vitalina(discord.Client):
 
 
         if trigger_vitalina:
+            if message.content == "Виталина, ты умеешь мапать?":
+                await message.channel.send(f"О, конечно! Совсем недавно я закончила две свои карты. Можешь оценить? https://cdn.discordapp.com/attachments/1187704983651631174/1188428153299943534/MORGENSHTERN_-_SEL_DEDA.osz https://cdn.discordapp.com/attachments/1187704983651631174/1188428257851363328/Team_Grimoire_-_C18H27NO3.osz")
+                return True
+
             if message.content == "Виталина, голос":
                 await message.channel.send(f"Пушистый здряв")
                 return True
@@ -112,6 +116,7 @@ class Vitalina(discord.Client):
             
             if random_event > 98:
                 await message.channel.send(f"Собакам слова не давали.")
+                return True
 
             bot_response = await chatgpt_response(message.content)
             await message.channel.send(bot_response)
