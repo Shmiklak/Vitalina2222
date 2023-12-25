@@ -125,8 +125,16 @@ class Vitalina(discord.Client):
                 await message.channel.send(photos)
                 return True
             
+            if random_event == 100:
+                await message.channel.send(f"Я устала, за меня ответит <@566961732501635093>.")
+                return True
+            
             if random_event > 98:
                 await message.channel.send(f"Собакам слова не давали.")
+                return True
+            
+            if random_event < 2:
+                await message.channel.send(f"Лай для меня, собачка.")
                 return True
 
             if random_event > 75:
@@ -141,3 +149,5 @@ class Vitalina(discord.Client):
 intents = discord.Intents.default()
 intents.message_content = True
 client = Vitalina(intents=intents)
+
+
