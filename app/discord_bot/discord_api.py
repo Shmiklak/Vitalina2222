@@ -15,6 +15,13 @@ consecutive_messages = 0
 required_consecutive_messages = 3
 
 
+#
+# NORMAL
+# PASSIVE
+#
+
+vitalina_current_mode = "NORMAL"
+
 vitalina_ignore_list = [982193341754122250, 395291663834021890]
 
 class Vitalina(discord.Client):
@@ -37,6 +44,7 @@ class Vitalina(discord.Client):
         global consecutive_messages
         global recent_senders
         global recent_messages
+        global vitalina_current_mode
 
         if message.author.id not in recent_senders and message.content in recent_messages:
             recent_senders.append(message.author.id)
@@ -75,7 +83,7 @@ class Vitalina(discord.Client):
         
         trigger_vitalina = False
 
-        for text in ['вита', 'vita', '1187685558382772254']:
+        for text in ['витал', 'vital', '1187685558382772254']:
             if text in message.content.lower():
                 trigger_vitalina = True
 
@@ -86,13 +94,67 @@ class Vitalina(discord.Client):
                 trigger_vitalina = True
 
 
-        if trigger_vitalina:
+        if trigger_vitalina:       
+
+            ###                                 ###
+            ### СИСТЕМНЫЕ КОМАНДЫ ДЛЯ ШМИКЛАКА  ###
+            ###                                 ###
+
+            if message.content.lower() == "виталина, дейлики":
+                if message.author.id == 138957703853768705:
+                    await message.channel.send(f"<@304470215733936148> сделай дейлики шмиклаку пожалуйста")
+                    return True
+                else:
+                    await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                    return True
+            
+            if message.content.lower() == "виталина, история":
+                if message.author.id == 138957703853768705:
+                    bot_response = await chatgpt_response("MARVOLLO_HISTORY")
+                    await message.channel.send(bot_response)
+                    return True
+                else:
+                    await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                    return True
+            
+            if message.content.lower() == "виталина, обычный режим":
+                if message.author.id == 138957703853768705:
+                    vitalina_current_mode = "NORMAL"
+                    await message.channel.send("Изменила режим работы на обычный.")
+                    return True
+                else:
+                    await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                    return True
+            
+            if message.content.lower() == "виталина, пассивный режим":
+                if message.author.id == 138957703853768705:
+                    vitalina_current_mode = "PASSIVE"
+                    await message.channel.send("Изменила режим работы на пассивный.")
+                    return True
+                else:
+                    await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                    return True
+            
+            ### виталина, отправляем сообщение|CHANNEL_ID|MESSAGE
+
+            if "виталина, отправляем сообщение" in message.content.lower():
+                if message.author.id == 138957703853768705:
+                    res = message.content.split('|')
+                    channel = res[1]
+                    content = res[2]
+                    discord_channel = self.get_channel(int(channel))
+                    await discord_channel.send(content)
+                    return True
+                else:
+                    await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                    return True
+            
+            ###                                 ###
+            ### ОБЩИЕ КОМАНДЫ                   ###
+            ###                                 ###
+            
             if message.content.lower() == "виталина, ты умеешь мапать?":
                 await message.channel.send(f"О, конечно! Совсем недавно я закончила две свои карты. Можешь оценить? https://cdn.discordapp.com/attachments/1187704983651631174/1188428153299943534/MORGENSHTERN_-_SEL_DEDA.osz https://cdn.discordapp.com/attachments/1187704983651631174/1188428257851363328/Team_Grimoire_-_C18H27NO3.osz")
-                return True
-            
-            if message.content.lower() == "виталина, дейлики" and message.author.id == 138957703853768705:
-                await message.channel.send(f"<@304470215733936148> сделай дейлики шмиклаку пожалуйста")
                 return True
 
             if message.content.lower() == "виталина, голос":
@@ -125,6 +187,10 @@ class Vitalina(discord.Client):
                 await message.channel.send(photos)
                 return True
             
+            ###                                 ###
+            ### СЛУЧАЙНЫЕ СОБЫТИЯ               ###
+            ###                                 ###
+
             if random_event == 100:
                 await message.channel.send(f"Я устала, за меня ответит <@566961732501635093>.")
                 return True
@@ -137,7 +203,7 @@ class Vitalina(discord.Client):
                 await message.channel.send(f"Лай для меня, собачка.")
                 return True
 
-            if random_event > 75:
+            if random_event > 75 or vitalina_current_mode == "PASSIVE":
                 gif = selectRandomGif()
                 await message.channel.send(gif)
                 return True

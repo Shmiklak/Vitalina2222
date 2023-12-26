@@ -17,6 +17,10 @@ with open('vitalina.txt', encoding = 'utf-8', mode = 'r') as file:
 vitalina_history = []
 
 async def chatgpt_response(prompt):
+    
+    if (prompt == "MARVOLLO_HISTORY"):
+        return vitalina_history
+
     print("Начинаю генерировать ответ...")
 
 
