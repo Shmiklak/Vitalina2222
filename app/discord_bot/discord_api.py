@@ -116,6 +116,15 @@ class Vitalina(discord.Client):
                 else:
                     await message.channel.send(f"Извините, но вы не можете использовать эту команду")
                     return True
+                
+            if message.content.lower() == "виталина, сброс":
+                if message.author.id == 138957703853768705:
+                    bot_response = await chatgpt_response("MARVOLLO_RESET")
+                    await message.channel.send(f"Виталина была сброшена")
+                    return True
+                else:
+                    await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                    return True
             
             if message.content.lower() == "виталина, обычный режим":
                 if message.author.id == 138957703853768705:

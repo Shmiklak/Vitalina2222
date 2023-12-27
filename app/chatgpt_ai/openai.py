@@ -20,6 +20,10 @@ async def chatgpt_response(prompt):
     
     if (prompt == "MARVOLLO_HISTORY"):
         return vitalina_history
+    
+    if (prompt == "MARVOLLO_RESET"):
+        vitalina_history = []
+        return vitalina_history
 
     print("Начинаю генерировать ответ...")
 
