@@ -18,6 +18,8 @@ vitalina_history = []
 
 async def chatgpt_response(prompt):
     
+    global vitalina_history
+
     if (prompt == "MARVOLLO_HISTORY"):
         return vitalina_history
     
