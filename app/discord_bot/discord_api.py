@@ -120,7 +120,7 @@ class Vitalina(discord.Client):
             if message.content.lower() == "виталина, сброс":
                 if message.author.id == 138957703853768705:
                     bot_response = await chatgpt_response("MARVOLLO_RESET")
-                    await message.channel.send(f"Виталина была сброшена")
+                    await message.channel.send(f"Виталина была сброшена с моста.<:pepeBusiness:1036987708456845391>")
                     return True
                 else:
                     await message.channel.send(f"Извините, но вы не можете использовать эту команду")
