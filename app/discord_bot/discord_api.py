@@ -67,10 +67,10 @@ class Vitalina(discord.Client):
         print(bcolors.OKGREEN, "ТЕКУЩАЯ ВЕРОЯТНОСТЬ: ", random_event, bcolors.ENDC)
         print(bcolors.OKGREEN, "ТЕКУЩАЯ РЕДКАЯ ВЕРОЯТНОСТЬ: ", rare_events, bcolors.ENDC)
 
-        if message.author.id == 305361927415136258 or message.author.id == 313751415061479426:
-            if random_event > 95:
-                await message.channel.send(f"https://tenor.com/view/mother-sgnila-cute-dance-moves-bear-gif-16312770")
-                return True
+        # if message.author.id == 305361927415136258 or message.author.id == 313751415061479426:
+        #     if random_event > 95:
+        #         await message.channel.send(f"https://tenor.com/view/mother-sgnila-cute-dance-moves-bear-gif-16312770")
+        #         return True
             
         if rare_events > 998:
             await message.channel.send(f"Пока перерыв расскажу лайфхак, в бауманке придумали такую хуйню, можно пельмени не варить а употреблять прямо так, замороженые, можно перед парами пельмень аккуратно вставить в анус и идти спокойно, сразу в кишку поступают белки там, углеводы, жиры, под конец курса можно было по 5-6 пельменей помещать")
@@ -79,7 +79,7 @@ class Vitalina(discord.Client):
         if '1187685558382772254' in message.content:
             if random_event > 50:
                 await message.channel.send(f"https://tenor.com/view/chungus-pinged-ben-shapiro-discord-big-gif-21424212")
-                return True
+                return True 
         
         trigger_vitalina = False
 
