@@ -1,4 +1,6 @@
 discord.py==2.1.0
-openai==0.26.0
+openai==1.10.0
 python-dotenv==0.21.0
 requests==2.25.1
+psycopg2==2.9.9
+ossapi==3.4.0

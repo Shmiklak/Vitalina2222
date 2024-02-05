@@ -3,7 +3,7 @@ import discord
 import os
 import random
 from app.chatgpt_ai.openai import chatgpt_response
-from app.vitalina_utilities.utilities import selectRandomGif, bcolors, selectRandomVitas, selectRandomShrine
+from app.vitalina_utilities.utilities import selectRandomGif, bcolors, selectRandomVitas, selectRandomShrine, selectRandomUser
 
 load_dotenv()
 
@@ -27,7 +27,7 @@ vitalina_ignore_list = [982193341754122250, 395291663834021890]
 class Vitalina(discord.Client):
     async def on_ready(self):
         print("Виталина успешно запустилась на аккаунте: ", self.user)
-        await self.change_presence(activity=discord.Game(name="osu!"))
+        await self.change_presence(activity=discord.Game(name="The Matrix Awakens: Vitalina's Invasion"))
 
     async def on_message(self, message):
         if message.author == self.user or message.author.id in vitalina_ignore_list:
@@ -201,7 +201,8 @@ class Vitalina(discord.Client):
             ###                                 ###
 
             if random_event == 100:
-                await message.channel.send(f"Я устала, за меня ответит <@566961732501635093>.")
+                user = selectRandomUser()
+                await message.channel.send(f"Я устала, за меня ответит <@" + user + ">.")
                 return True
             
             if random_event > 98:
