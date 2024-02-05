@@ -24,7 +24,7 @@ required_consecutive_messages = 3
 
 vitalina_current_mode = "NORMAL"
 
-vitalina_ignore_list = [982193341754122250, 395291663834021890]
+vitalina_ignore_list = []
 
 class Vitalina(discord.Client):
     async def on_ready(self):
