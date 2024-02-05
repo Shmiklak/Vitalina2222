@@ -108,10 +108,6 @@ class Vitalina(discord.Client):
             ### СИСТЕМНЫЕ КОМАНДЫ ДЛЯ ШМИКЛАКА  ###
             ###                                 ###
 
-            if vitalina_current_mode == "AGRESSIVE":
-                await message.channel.send(selectRandomMessage())
-                return True
-
             if message.content.lower() == "виталина, дейлики":
                 if message.author.id == 138957703853768705:
                     await message.channel.send(f"<@304470215733936148> сделай дейлики шмиклаку пожалуйста")
@@ -221,8 +217,7 @@ class Vitalina(discord.Client):
             ### СЛУЧАЙНЫЕ СОБЫТИЯ               ###
             ###                                 ###
 
-
-            if random_event < 40:
+            if random_event < 40 or vitalina_current_mode == "AGRESSIVE":
                 await message.channel.send(selectRandomMessage())
                 return True
 
