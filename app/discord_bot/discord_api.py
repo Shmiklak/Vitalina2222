@@ -4,6 +4,7 @@ import os
 import random
 from app.chatgpt_ai.openai import chatgpt_response
 from app.vitalina_utilities.utilities import selectRandomGif, bcolors, selectRandomVitas, selectRandomShrine, selectRandomUser
+from app.database.database import dbInsert, selectRandomMessage
 
 load_dotenv()
 
@@ -18,6 +19,7 @@ required_consecutive_messages = 3
 #
 # NORMAL
 # PASSIVE
+# AGRESSIVE
 #
 
 vitalina_current_mode = "NORMAL"
@@ -40,6 +42,8 @@ class Vitalina(discord.Client):
         if message.content == "шмик":
             await message.channel.send(f"Сегодня я вместо него. Чем могу помочь? <:pepeBusiness:1036987708456845391>")
             return True
+        
+        dbInsert("INSERT INTO all_messages (message) VALUES (%s)", [message.content])
         
         global consecutive_messages
         global recent_senders
@@ -75,6 +79,10 @@ class Vitalina(discord.Client):
         if rare_events > 998:
             await message.channel.send(f"Пока перерыв расскажу лайфхак, в бауманке придумали такую хуйню, можно пельмени не варить а употреблять прямо так, замороженые, можно перед парами пельмень аккуратно вставить в анус и идти спокойно, сразу в кишку поступают белки там, углеводы, жиры, под конец курса можно было по 5-6 пельменей помещать")
             return True
+        
+        if rare_events > 950:
+            await message.channel.send(selectRandomMessage())
+            return True
 
         if '1187685558382772254' in message.content:
             if random_event > 50:
@@ -99,6 +107,10 @@ class Vitalina(discord.Client):
             ###                                 ###
             ### СИСТЕМНЫЕ КОМАНДЫ ДЛЯ ШМИКЛАКА  ###
             ###                                 ###
+
+            if vitalina_current_mode == "AGRESSIVE":
+                await message.channel.send(selectRandomMessage())
+                return True
 
             if message.content.lower() == "виталина, дейлики":
                 if message.author.id == 138957703853768705:
@@ -139,6 +151,15 @@ class Vitalina(discord.Client):
                 if message.author.id == 138957703853768705:
                     vitalina_current_mode = "PASSIVE"
                     await message.channel.send("Изменила режим работы на пассивный.")
+                    return True
+                else:
+                    await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                    return True
+                
+            if message.content.lower() == "виталина, агрессивный режим":
+                if message.author.id == 138957703853768705:
+                    vitalina_current_mode = "AGRESSIVE"
+                    await message.channel.send("Изменила режим работы на агрессивный.")
                     return True
                 else:
                     await message.channel.send(f"Извините, но вы не можете использовать эту команду")
@@ -199,6 +220,11 @@ class Vitalina(discord.Client):
             ###                                 ###
             ### СЛУЧАЙНЫЕ СОБЫТИЯ               ###
             ###                                 ###
+
+
+            if random_event < 40:
+                await message.channel.send(selectRandomMessage())
+                return True
 
             if random_event == 100:
                 user = selectRandomUser()
