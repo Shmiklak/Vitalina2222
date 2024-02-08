@@ -12,3 +12,5 @@ async def getOsuUser(query, mode=""):
     else:
         return api.user(query)
 
+async def getRecentScore(user_id):
+    return None

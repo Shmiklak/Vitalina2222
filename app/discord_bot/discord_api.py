@@ -75,6 +75,10 @@ class Vitalina(discord.Client):
         if message.content.lower() == "да":
             await message.channel.send("https://cdn.discordapp.com/attachments/1204044194499403776/1204394774107525161/wk7pnm_dqkY.png?ex=65d4930a&is=65c21e0a&hm=361e66ff592612704a2aa619b202244a073079dff3c425929f46bf9d7e318703&")
             return True
+        
+        if message.content.lower() == "нет":
+            await message.channel.send("Пидора ответ.")
+            return True
 
         random_event = random.randint(0, 100)
         rare_events = random.randint(0, 1000)
@@ -100,7 +104,7 @@ class Vitalina(discord.Client):
                 return True
         
         if message.content.lower() == "виталина, история":
-            if message.author.id == 138957703853768705:
+            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
                 bot_response = await chatgpt_response("MARVOLLO_HISTORY")
                 await message.channel.send(bot_response)
                 return True
@@ -109,7 +113,7 @@ class Vitalina(discord.Client):
                 return True
             
         if message.content.lower() == "виталина, сброс":
-            if message.author.id == 138957703853768705:
+            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
                 bot_response = await chatgpt_response("MARVOLLO_RESET")
                 await message.channel.send(f"Виталина была сброшена с моста.<:pepeBusiness:1036987708456845391>")
                 return True
@@ -118,7 +122,7 @@ class Vitalina(discord.Client):
                 return True
         
         if message.content.lower() == "виталина, обычный режим":
-            if message.author.id == 138957703853768705:
+            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
                 vitalina_current_mode = "NORMAL"
                 await message.channel.send("Изменила режим работы на обычный.")
                 return True
@@ -127,7 +131,7 @@ class Vitalina(discord.Client):
                 return True
         
         if message.content.lower() == "виталина, пассивный режим":
-            if message.author.id == 138957703853768705:
+            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
                 vitalina_current_mode = "PASSIVE"
                 await message.channel.send("Изменила режим работы на пассивный.")
                 return True
@@ -136,7 +140,7 @@ class Vitalina(discord.Client):
                 return True
             
         if message.content.lower() == "виталина, агрессивный режим":
-            if message.author.id == 138957703853768705:
+            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
                 vitalina_current_mode = "AGRESSIVE"
                 await message.channel.send("Изменила режим работы на агрессивный.")
                 return True
@@ -145,7 +149,7 @@ class Vitalina(discord.Client):
                 return True
             
         if message.content.lower() == "виталина, режим резня":
-            if message.author.id == 138957703853768705:
+            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
                 vitalina_current_mode = "VERY_AGRESSIVE"
                 await message.channel.send("РЕЗНЯ")
                 return True
@@ -156,7 +160,7 @@ class Vitalina(discord.Client):
         ### виталина, отправляем сообщение|CHANNEL_ID|MESSAGE
 
         if "виталина, отправляем сообщение" in message.content.lower():
-            if message.author.id == 138957703853768705:
+            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
                 res = message.content.split('|')
                 channel = res[1]
                 content = res[2]
@@ -236,7 +240,7 @@ class Vitalina(discord.Client):
             ### СЛУЧАЙНЫЕ СОБЫТИЯ               ###
             ###                                 ###
 
-            if random_event < 40 or vitalina_current_mode == "AGRESSIVE" or vitalina_current_mode == "VERY_AGRESSIVE":
+            if random_event < 30 or vitalina_current_mode == "AGRESSIVE" or vitalina_current_mode == "VERY_AGRESSIVE":
                 await message.channel.send(selectRandomMessage())
                 return True
 
