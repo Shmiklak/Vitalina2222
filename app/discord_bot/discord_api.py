@@ -72,11 +72,11 @@ class Vitalina(discord.Client):
             recent_messages = []
             consecutive_messages = 0
     
-        if message.content.lower() == "да":
+        if message.content.lower() == "да" or message.content.lower() == "da":
             await message.channel.send("https://cdn.discordapp.com/attachments/1204044194499403776/1204394774107525161/wk7pnm_dqkY.png?ex=65d4930a&is=65c21e0a&hm=361e66ff592612704a2aa619b202244a073079dff3c425929f46bf9d7e318703&")
             return True
         
-        if message.content.lower() == "нет":
+        if message.content.lower() == "нет" or message.content.lower() == "net":
             await message.channel.send("Пидора ответ.")
             return True
 
