@@ -24,6 +24,7 @@ required_consecutive_messages = 3
 # PASSIVE
 # AGRESSIVE
 # VERY_AGRESSIVE
+# SLEEP
 #
 
 vitalina_current_mode = "NORMAL"
@@ -72,11 +73,11 @@ class Vitalina(discord.Client):
             recent_messages = []
             consecutive_messages = 0
     
-        if message.content.lower() == "да" or message.content.lower() == "da":
+        if (message.content.lower() == "да" or message.content.lower() == "da") and vitalina_current_mode != "SLEEP":
             await message.channel.send("https://cdn.discordapp.com/attachments/1204044194499403776/1204394774107525161/wk7pnm_dqkY.png?ex=65d4930a&is=65c21e0a&hm=361e66ff592612704a2aa619b202244a073079dff3c425929f46bf9d7e318703&")
             return True
         
-        if message.content.lower() == "нет" or message.content.lower() == "net":
+        if (message.content.lower() == "нет" or message.content.lower() == "net") and vitalina_current_mode != "SLEEP":
             await message.channel.send("Пидора ответ.")
             return True
 
@@ -156,6 +157,15 @@ class Vitalina(discord.Client):
             else:
                 await message.channel.send(f"Извините, но вы не можете использовать эту команду")
                 return True
+            
+        if message.content.lower() == "виталина, режим спячка":
+            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
+                vitalina_current_mode = "SLEEP"
+                await message.channel.send("Всем спокойной ночи!")
+                return True
+            else:
+                await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                return True
         
         ### виталина, отправляем сообщение|CHANNEL_ID|MESSAGE
 
@@ -170,6 +180,9 @@ class Vitalina(discord.Client):
             else:
                 await message.channel.send(f"Извините, но вы не можете использовать эту команду")
                 return True
+            
+        if vitalina_current_mode == "SLEEP":
+            return True
         
         ###                                 ###
         ### ОБЩИЕ КОМАНДЫ                   ###
