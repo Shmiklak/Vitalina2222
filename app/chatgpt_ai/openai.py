@@ -1,5 +1,4 @@
 from dotenv import load_dotenv
-import asyncio
 from openai import AsyncOpenAI
 import os
 
@@ -44,7 +43,7 @@ async def chatgpt_response(prompt):
     response = await client.chat.completions.create(
         messages=messages_to_send,
         model="gpt-3.5-turbo",
-        max_tokens=150,
+        max_tokens=300,
         temperature=0.4
     )
 

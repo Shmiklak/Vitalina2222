@@ -7,6 +7,7 @@ def selectRandomGif():
     random_gif = random.randint(0, len(gifs) - 1)
     return gifs[random_gif]
 
+
 with open('vitas_messages.txt', encoding = 'utf-8', mode = 'r') as file:
     photos = [line.rstrip() for line in file]
 
@@ -21,6 +22,13 @@ def selectRandomShrine():
     random_shrine = random.randint(0, len(shrine) - 1)
     return shrine[random_shrine]
 
+with open('random_user.txt', encoding='utf-8', mode='r') as file:
+    users = [line.rstrip() for line in file]
+
+def selectRandomUser():
+    random_user = random.randint(0, len(users) - 1)
+    return users[random_user]
+
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -31,5 +39,3 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
-
-    
