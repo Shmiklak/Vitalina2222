@@ -13,6 +13,11 @@ load_dotenv()
 discord_token = os.getenv('DISCORD_TOKEN')
 discord_client = os.getenv('DISCORD_CLIENT_ID')
 
+vitalina_triggers = ['витал', 'vital', '1187685558382772254', 'гуталин', 'буталин']
+
+if os.getenv("MODE") == "DEV":
+    vitalina_triggers = ['наст', 'nast']
+
 recent_senders = []
 recent_messages = []
 consecutive_messages = 0
@@ -25,6 +30,7 @@ required_consecutive_messages = 3
 # AGRESSIVE
 # VERY_AGRESSIVE
 # SLEEP
+# AI_ONLY
 #
 
 vitalina_current_mode = "NORMAL"
@@ -57,6 +63,7 @@ class Vitalina(discord.Client):
         global recent_senders
         global recent_messages
         global vitalina_current_mode
+        global vitalina_triggers
 
         if message.author.id not in recent_senders and message.content in recent_messages:
             recent_senders.append(message.author.id)
@@ -85,6 +92,10 @@ class Vitalina(discord.Client):
         rare_events = random.randint(0, 1000)
         print(bcolors.OKGREEN, "ТЕКУЩАЯ ВЕРОЯТНОСТЬ: ", random_event, bcolors.ENDC)
         print(bcolors.OKGREEN, "ТЕКУЩАЯ РЕДКАЯ ВЕРОЯТНОСТЬ: ", rare_events, bcolors.ENDC)
+
+        if vitalina_current_mode == "AI_ONLY":
+            random_event = 50
+            rare_events = 0
 
         # if message.author.id == 305361927415136258 or message.author.id == 313751415061479426:
         #     if random_event > 95:
@@ -166,6 +177,15 @@ class Vitalina(discord.Client):
             else:
                 await message.channel.send(f"Извините, но вы не можете использовать эту команду")
                 return True
+            
+        if message.content.lower() == "виталина, умный режим":
+            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
+                vitalina_current_mode = "AI_ONLY"
+                await message.channel.send("Теперь я знаю всё на этом свете.")
+                return True
+            else:
+                await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                return True
         
         ### виталина, отправляем сообщение|CHANNEL_ID|MESSAGE
 
@@ -222,22 +242,18 @@ class Vitalina(discord.Client):
             await message.channel.send(photos)
             return True
             
-        if rare_events > 998:
-            await message.channel.send(f"Пока перерыв расскажу лайфхак, в бауманке придумали такую хуйню, можно пельмени не варить а употреблять прямо так, замороженые, можно перед парами пельмень аккуратно вставить в анус и идти спокойно, сразу в кишку поступают белки там, углеводы, жиры, под конец курса можно было по 5-6 пельменей помещать")
-            return True
-        
-        if rare_events > 950 or (vitalina_current_mode == "VERY_AGRESSIVE" and rare_events > 700):
+        if rare_events > 990 or (vitalina_current_mode == "VERY_AGRESSIVE" and rare_events > 880):
             await message.channel.send(selectRandomMessage())
             return True
 
         if '1187685558382772254' in message.content:
-            if random_event > 50:
+            if random_event > 80:
                 await message.channel.send(f"https://tenor.com/view/chungus-pinged-ben-shapiro-discord-big-gif-21424212")
                 return True 
         
         trigger_vitalina = False
 
-        for text in ['витал', 'vital', '1187685558382772254', 'гуталин', 'буталин']:
+        for text in vitalina_triggers:
             if text in message.content.lower():
                 trigger_vitalina = True
 
@@ -253,16 +269,16 @@ class Vitalina(discord.Client):
             ### СЛУЧАЙНЫЕ СОБЫТИЯ               ###
             ###                                 ###
 
-            if random_event < 30 or vitalina_current_mode == "AGRESSIVE" or vitalina_current_mode == "VERY_AGRESSIVE":
+            if random_event < 15 or vitalina_current_mode == "AGRESSIVE" or vitalina_current_mode == "VERY_AGRESSIVE":
                 await message.channel.send(selectRandomMessage())
                 return True
 
-            if random_event == 100:
-                user = selectRandomUser()
-                await message.channel.send(f"Я устала, за меня ответит <@" + user + ">.")
-                return True
+            # if random_event == 100:
+            #     user = selectRandomUser()
+            #     await message.channel.send(f"Я устала, за меня ответит <@" + user + ">.")
+            #     return True
             
-            if random_event > 98:
+            if random_event == 100:
                 await message.channel.send(f"Собакам слова не давали.")
                 return True
             
@@ -270,7 +286,7 @@ class Vitalina(discord.Client):
                 await message.channel.send(f"Лай для меня, собачка.")
                 return True
 
-            if random_event > 75 or vitalina_current_mode == "PASSIVE":
+            if random_event > 85 or vitalina_current_mode == "PASSIVE":
                 gif = selectRandomGif()
                 await message.channel.send(gif)
                 return True
