@@ -29,6 +29,26 @@ def selectRandomUser():
     random_user = random.randint(0, len(users) - 1)
     return users[random_user]
 
+def getRankEmoji(Grade):
+    if str(Grade) == "Grade.A":
+        return "<:rankingAsmall:1211650736375468032>"
+    elif str(Grade) == "Grade.B":
+        return "<:rankingBsmall:1211650794643001364>"
+    elif str(Grade) == "Grade.C":
+        return "<:rankingCsmall:1211650833255501874>"
+    elif str(Grade) == "Grade.D":
+        return "<:rankingDsmall:1211650875182030868>"
+    elif str(Grade) == "Grade.SH":
+        return "<:rankingSHsmall:1211650952579518515>"
+    elif str(Grade) == "Grade.S":
+        return "<:rankingSsmall:1211650920862056499>"
+    elif str(Grade) == "Grade.XH":
+        return "<:rankingXHsmall:1211650992299577387>"
+    elif str(Grade) == "Grade.X":
+        return "<:rankingXsmall:1211651039724445768>"
+    else:
+        return "<:rankingFsmall:1211653378527072297>"
+
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'

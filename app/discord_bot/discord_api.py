@@ -7,6 +7,7 @@ from app.vitalina_utilities.utilities import selectRandomGif, bcolors, selectRan
 from app.database.database import dbInsert, selectRandomMessage, saveUser, getUser
 import app.osu.api
 import app.responses.User
+import app.responses.Score
 
 load_dotenv()
 
@@ -322,7 +323,6 @@ async def self(interaction: discord.Interaction, name: str="", mode: str=""):
         query = user_id
 
     user = await app.osu.api.getOsuUser(query, mode)
-    # await interaction.channel.send(app.responses.User.prepare(user))
     await interaction.response.defer()
     await interaction.followup.send(embed=app.responses.User.prepare(user))
 
@@ -332,3 +332,15 @@ async def self(interaction: discord.Interaction, name: str):
     saveUser(interaction.user.id, user.id)
     await interaction.response.defer()
     await interaction.followup.send(f"Your Discord account is now connected with your osu! profile {user.username}")
+
+@tree.command(name = "osu_recent_score", description = "Get information about your latest score")
+async def self(interaction: discord.Interaction):
+
+    user_id = getUser(interaction.user.id)
+    if user_id == "ERROR":
+        await interaction.response.send_message("You don't have an osu! profile assigned to your Discord account, neither provided username. Please set your own profile using /osu_set_profile")
+        return False
+    score = await app.osu.api.getRecentScore(user_id)
+    beatmap = await app.osu.api.getBeatmap(score[0].beatmap.id)
+    await interaction.response.defer()
+    await interaction.followup.send(f"**Recent play for {score[0]._user.username}**", embed=app.responses.Score.prepare(score[0], beatmap))
