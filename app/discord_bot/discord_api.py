@@ -296,7 +296,7 @@ class Vitalina(discord.Client):
             return True
         
     async def on_member_join(self, member):
-        channel = self.get_channel(1188402132794212352)
+        channel = self.get_channel(788404299784912907)
         await channel.send(f"Hello {member.mention}! Welcome to our server. Please read <#882372059928354887> before you proceed. Once you read it, send your osu! profile link so <@&937077604203262023> can verify you.<:pepeBusiness:1036987708456845391>")
 
         
