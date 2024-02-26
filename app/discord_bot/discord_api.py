@@ -294,9 +294,16 @@ class Vitalina(discord.Client):
             bot_response = await chatgpt_response(message.content)
             await message.channel.send(bot_response)
             return True
+        
+    async def on_member_join(self, member):
+        channel = self.get_channel(1188402132794212352)
+        await channel.send(f"Hello {member.mention}! Welcome to our server. Please read <#882372059928354887> before you proceed. Once you read it, send your osu! profile link so <@&937077604203262023> can verify you.<:pepeBusiness:1036987708456845391>")
+
+        
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True
 client = Vitalina(intents=intents)
 
 tree = discord.app_commands.CommandTree(client)
