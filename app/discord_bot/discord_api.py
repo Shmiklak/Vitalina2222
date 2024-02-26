@@ -319,6 +319,7 @@ async def self(interaction: discord.Interaction, name: str="", mode: str=""):
 
         if user_id == "ERROR":
             await interaction.response.send_message("You don't have an osu! profile assigned to your Discord account, neither provided username. Please set your own profile using /osu_set_profile")
+            return False
 
         query = user_id
 
@@ -341,6 +342,11 @@ async def self(interaction: discord.Interaction):
         await interaction.response.send_message("You don't have an osu! profile assigned to your Discord account, neither provided username. Please set your own profile using /osu_set_profile")
         return False
     score = await app.osu.api.getRecentScore(user_id)
+
+    if not score:
+        await interaction.response.send_message("You don't have recent scores to display.")
+        return False
+
     beatmap = await app.osu.api.getBeatmap(score[0].beatmap.id)
     await interaction.response.defer()
     await interaction.followup.send(f"**Recent play for {score[0]._user.username}**", embed=app.responses.Score.prepare(score[0], beatmap))
