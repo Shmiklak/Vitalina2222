@@ -35,7 +35,7 @@ required_consecutive_messages = 3
 
 vitalina_current_mode = "NORMAL"
 
-vitalina_ignore_list = ['161187807073665024', '208972600213372930']
+vitalina_ignore_list = [161187807073665024, 208972600213372930]
 
 class Vitalina(discord.Client):
     
