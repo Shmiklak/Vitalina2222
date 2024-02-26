@@ -13,4 +13,7 @@ async def getOsuUser(query, mode=""):
         return api.user(query)
 
 async def getRecentScore(user_id):
-    return None
+    return api.user_scores(user_id=user_id, type="recent", limit=1)
+
+async def getBeatmap(beatmap_id):
+    return api.beatmap(beatmap_id)
