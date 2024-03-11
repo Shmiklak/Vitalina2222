@@ -46,7 +46,7 @@ class Vitalina(discord.Client):
         await self.change_presence(activity=discord.Game(name="The Matrix Awakens: Vitalina's Invasion"))
 
         discord_channel = self.get_channel(int(1216656123239731220))
-        await discord_channel.send("Виталина успешно запустилась на аккаунте: " + self.user)
+        await discord_channel.send("Виталина успешно запустилась.")
         return True
 
     async def on_message(self, message):
