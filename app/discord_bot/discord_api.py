@@ -16,8 +16,8 @@ discord_client = os.getenv('DISCORD_CLIENT_ID')
 
 vitalina_triggers = ['витал', 'vital', '1187685558382772254', 'гуталин', 'буталин']
 
-if os.getenv("MODE") == "DEV":
-    vitalina_triggers = ['наст', 'nast']
+# if os.getenv("MODE") == "DEV":
+    # vitalina_triggers = ['наст', 'nast']
 
 recent_senders = []
 recent_messages = []
@@ -34,7 +34,7 @@ required_consecutive_messages = 3
 # AI_ONLY
 #
 
-vitalina_current_mode = "NORMAL"
+vitalina_current_mode = "AI_ONLY"
 
 vitalina_ignore_list = []
 
@@ -44,6 +44,10 @@ class Vitalina(discord.Client):
         await tree.sync()
         print("Виталина успешно запустилась на аккаунте: ", self.user)
         await self.change_presence(activity=discord.Game(name="The Matrix Awakens: Vitalina's Invasion"))
+
+        discord_channel = self.get_channel(int(1216656123239731220))
+        await discord_channel.send("Виталина успешно запустилась на аккаунте: " + self.user)
+        return True
 
     async def on_message(self, message):
         if message.author == self.user or message.author.id in vitalina_ignore_list:
