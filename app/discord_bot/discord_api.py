@@ -42,9 +42,7 @@ class Vitalina(discord.Client):
     
     async def on_ready(self):
         await tree.sync()
-        print("Виталина успешно запустилась на аккаунте: ", self.user)
-        await self.change_presence(activity=discord.Game(name="The Matrix Awakens: Vitalina's Invasion"))
-
+        await self.change_presence(activity=discord.Game(name="osu!"))
         discord_channel = self.get_channel(int(1216656123239731220))
         await discord_channel.send("Виталина успешно запустилась.")
         return True
