@@ -245,7 +245,7 @@ class Vitalina(discord.Client):
             await message.channel.send(photos)
             return True
             
-        if rare_events > 990 or (vitalina_current_mode == "VERY_AGRESSIVE" and rare_events > 880):
+        if rare_events > 880 or (vitalina_current_mode == "VERY_AGRESSIVE" and rare_events > 660):
             await message.channel.send(selectRandomMessage())
             return True
 
@@ -272,7 +272,7 @@ class Vitalina(discord.Client):
             ### СЛУЧАЙНЫЕ СОБЫТИЯ               ###
             ###                                 ###
 
-            if random_event < 15 or vitalina_current_mode == "AGRESSIVE" or vitalina_current_mode == "VERY_AGRESSIVE":
+            if random_event < 25 or vitalina_current_mode == "AGRESSIVE" or vitalina_current_mode == "VERY_AGRESSIVE":
                 await message.channel.send(selectRandomMessage())
                 return True
 
@@ -285,11 +285,11 @@ class Vitalina(discord.Client):
                 await message.channel.send(f"Собакам слова не давали.")
                 return True
             
-            if random_event < 2:
+            if random_event < 5:
                 await message.channel.send(f"Лай для меня, собачка.")
                 return True
 
-            if random_event > 85 or vitalina_current_mode == "PASSIVE":
+            if random_event > 75 or vitalina_current_mode == "PASSIVE":
                 gif = selectRandomGif()
                 await message.channel.send(gif)
                 return True
