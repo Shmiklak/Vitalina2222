@@ -197,14 +197,15 @@ class Vitalina(discord.Client):
                 for member in message.guild.members:
                     member_name = member.display_name
                     if await app.osu.api.isRussian(member_name):
-                        try:
+                        # try:
                             await member.add_roles(role)
                             await message.channel.send("Дала роль " + member_name)
-                        except:
-                            await message.channel.send("Не могу дать роль пользователю " + member_name)
-                            continue
-                    else:
-                        continue
+                        # except:
+                            # await message.channel.send("Не могу дать роль пользователю " + member_name)
+                            # continue
+                    # else:
+                        # await message.channel.send("Пользователь " + member_name + " не русский либо у него нет аккаунта в osu!")
+                        # continue
                 await message.channel.send("Чё то сделала)")
                 return True
             else:
