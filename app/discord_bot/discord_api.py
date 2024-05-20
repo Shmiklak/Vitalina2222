@@ -203,8 +203,8 @@ class Vitalina(discord.Client):
                             await member.add_roles(role)
                             # await discord_channel.send("Дала роль матрёшки пользователю ", member_name)
                         except:
-                            await message.channel.send("Всё пошло по пизде, проверь пермишены")
-                            break
+                            await message.channel.send("Не могу дать роль пользователю ", member_name)
+                            continue
                     else:
                         continue
                 await message.channel.send("Чё то сделала)")
