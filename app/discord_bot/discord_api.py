@@ -192,20 +192,20 @@ class Vitalina(discord.Client):
             
         if message.content.lower() == "виталина, русские":
             if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
-                role = message.guild.get_role(1242027476704563260)
+                role = message.guild.get_role(1238609813102006435)
                 await message.channel.send("Начинаю чё то делать")
                 for member in message.guild.members:
                     member_name = member.display_name
                     if await app.osu.api.isRussian(member_name):
-                        # try:
+                        try:
                             await member.add_roles(role)
                             await message.channel.send("Дала роль " + member_name)
-                        # except:
-                            # await message.channel.send("Не могу дать роль пользователю " + member_name)
-                            # continue
-                    # else:
-                        # await message.channel.send("Пользователь " + member_name + " не русский либо у него нет аккаунта в osu!")
-                        # continue
+                        except:
+                            await message.channel.send("Не могу дать роль пользователю " + member_name)
+                            continue
+                    else:
+                        await message.channel.send("Пользователь " + member_name + " не русский либо у него нет аккаунта в osu!")
+                        continue
                 await message.channel.send("Чё то сделала)")
                 return True
             else:
