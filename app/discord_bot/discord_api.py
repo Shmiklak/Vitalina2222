@@ -189,7 +189,29 @@ class Vitalina(discord.Client):
             else:
                 await message.channel.send(f"Извините, но вы не можете использовать эту команду")
                 return True
-        
+            
+        if message.content.lower() == "виталина, русские":
+            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
+                role = message.guild.get_role(1238609813102006435)
+                discord_channel = self.get_channel(int(1216656123239731220))
+                await message.channel.send("Начинаю чё то делать")
+                print(message.guild.members)
+                for member in message.guild.members:
+                    member_name = member.display_name
+                    if await app.osu.api.isRussian(member_name):
+                        try:
+                            await member.add_roles(role)
+                            await discord_channel.send("Дала роль матрёшки пользователю ", member_name)
+                        except:
+                            await message.channel.send("Всё пошло по пизде, проверь пермишены")
+                            break
+                    else:
+                        continue
+                await message.channel.send("Чё то сделала)")
+                return True
+            else:
+                await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                return True
         ### виталина, отправляем сообщение|CHANNEL_ID|MESSAGE
 
         if "виталина, отправляем сообщение" in message.content.lower():
