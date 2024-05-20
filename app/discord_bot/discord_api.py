@@ -204,7 +204,7 @@ class Vitalina(discord.Client):
                             # await discord_channel.send("Дала роль матрёшки пользователю ", member_name)
                         except:
                             await message.channel.send("Всё пошло по пизде, проверь пермишены")
-                            break
+                            continue
                     else:
                         continue
                 await message.channel.send("Чё то сделала)")
