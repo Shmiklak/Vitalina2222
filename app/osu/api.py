@@ -17,3 +17,14 @@ async def getRecentScore(user_id):
 
 async def getBeatmap(beatmap_id):
     return api.beatmap(beatmap_id)
+
+async def isRussian(query):
+    try:
+        user = api.user(query)
+    except:
+        return False
+    
+    if user.country_code in ["RU", "KZ", "UA", "BY"]:
+        return True
+    else:
+        return False
