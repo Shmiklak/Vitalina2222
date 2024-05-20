@@ -196,6 +196,10 @@ class Vitalina(discord.Client):
                 await message.channel.send("Начинаю чё то делать")
                 for member in message.guild.members:
                     member_name = member.display_name
+
+                    if member.nick != None:
+                        member_name = member.nick
+
                     if await app.osu.api.isRussian(member_name):
                         try:
                             await member.add_roles(role)
