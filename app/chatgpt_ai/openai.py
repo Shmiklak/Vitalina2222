@@ -5,29 +5,21 @@ import os
 load_dotenv()
 
 client = AsyncOpenAI(
-    api_key=os.getenv('OPENAI_TOKEN'),
-    # base_url=os.getenv('OPENAI_URL')
+    api_key=os.getenv('OPENAI_TOKEN')
 )
 
 with open('vitalina.txt', encoding = 'utf-8', mode = 'r') as file:
     vitalina = file.read()
 
-
 vitalina_history = []
 
 async def chatgpt_response(prompt):
-    
     global vitalina_history
-
     if (prompt == "MARVOLLO_HISTORY"):
         return vitalina_history
-    
     if (prompt == "MARVOLLO_RESET"):
         vitalina_history = []
         return vitalina_history
-
-    print("Начинаю генерировать ответ...")
-
 
     if len(vitalina_history) == 10:
         vitalina_history.pop(0)
@@ -43,11 +35,9 @@ async def chatgpt_response(prompt):
     response = await client.chat.completions.create(
         messages=messages_to_send,
         model="gpt-3.5-turbo",
-        max_tokens=300,
+        max_tokens=500,
         temperature=0.4
     )
-
-    print(response)
 
     vitalina_history.append({
         "role": "assistant",
