@@ -362,6 +362,7 @@ class VerificationModal(discord.ui.Modal, title='Verification'):
 
         saveUser(user.id, new_user_data.user.id)
         user.add_roles(verified_role)
+        user.edit(nick=self.name.value)
         if (new_user_data.is_russian):
             user.add_roles(russian_role)
         if (new_user_data.is_ranked):
