@@ -350,7 +350,7 @@ class VerificationModal(discord.ui.Modal, title='Verification'):
         guild = interaction.guild
         user = interaction.user
 
-        new_user_data = app.osu.api.checkUserRoles(self.name.value)
+        new_user_data = await app.osu.api.checkUserRoles(self.name.value)
 
         if (new_user_data == None):
             await interaction.response.send_message(f'I could not find osu! profile with username {self.name.value}. Please ask observer wards to verify you manually.')
@@ -361,12 +361,12 @@ class VerificationModal(discord.ui.Modal, title='Verification'):
         ranked_role = guild.get_role(795277624309055509)
 
         saveUser(user.id, new_user_data.user.id)
-        user.add_roles(verified_role)
-        user.edit(nick=self.name.value)
+        await user.add_roles(verified_role)
+        await user.edit(nick=self.name.value)
         if (new_user_data.is_russian):
-            user.add_roles(russian_role)
+            await user.add_roles(russian_role)
         if (new_user_data.is_ranked):
-            user.add_roles(ranked_role)
+            await user.add_roles(ranked_role)
 
         await interaction.response.send_message(f'You have been verified and your discord account is now linked with {self.name.value} osu! profile.')
 
