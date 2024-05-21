@@ -360,12 +360,12 @@ class VerificationModal(discord.ui.Modal, title='Verification'):
         russian_role = guild.get_role(1238609813102006435)
         ranked_role = guild.get_role(795277624309055509)
 
-        saveUser(user.id, new_user_data.user.id)
+        saveUser(user.id, new_user_data["user"].id)
         await user.add_roles(verified_role)
         await user.edit(nick=self.name.value)
-        if (new_user_data.is_russian):
+        if (new_user_data["is_russian"]):
             await user.add_roles(russian_role)
-        if (new_user_data.is_ranked):
+        if (new_user_data["is_ranked"]):
             await user.add_roles(ranked_role)
 
         await interaction.response.send_message(f'You have been verified and your discord account is now linked with {self.name.value} osu! profile.')
