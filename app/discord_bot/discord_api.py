@@ -180,7 +180,7 @@ class Vitalina(discord.Client):
             else:
                 await message.channel.send(f"Извините, но вы не можете использовать эту команду")
                 return True
-            
+
         if message.content.lower() == "виталина, умный режим":
             if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
                 vitalina_current_mode = "AI_ONLY"
@@ -326,10 +326,8 @@ class Vitalina(discord.Client):
     async def on_member_join(self, member):
         if (member.guild.id == 788166617308987416):
             channel = self.get_channel(788404299784912907)
-            await channel.send(f"Hello {member.mention}! Welcome to our server. Please read <#882372059928354887> before you proceed. Once you read it, please use `/osu_set_profile` command to get verified. In case you don't have a valid osu! account or have been restricted please contact Observer Wards to manually verify you.<:pepeBusiness:1036987708456845391>")
-
-        
-
+            await channel.send(f"Hello {member.mention}! Welcome to our server. Please read <#882372059928354887> before you proceed. Once you read it, please use button below to get verified. In case you don't have a valid osu! account or have been restricted please contact Observer Wards to manually verify you.<:pepeBusiness:1036987708456845391>", view=VerificationButton())
+            
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
@@ -337,11 +335,47 @@ client = Vitalina(intents=intents)
 
 tree = discord.app_commands.CommandTree(client)
 
+class VerificationButton(discord.ui.View):
+    @discord.ui.button(label="Verify", style=discord.ButtonStyle.primary)
+    async def button_callback(self, interaction: discord.Interaction, button):
+        await interaction.response.send_modal(VerificationModal())
+
+class VerificationModal(discord.ui.Modal, title='Verification'):
+    name = discord.ui.TextInput(
+        label='Your osu! profile username',
+        placeholder='Please ensure to enter valid osu! name'
+    )
+
+    async def on_submit(self, interaction: discord.Interaction):
+        guild = interaction.guild
+        user = interaction.user
+
+        new_user_data = app.osu.api.checkUserRoles(self.name.value)
+
+        if (new_user_data == None):
+            await interaction.response.send_message(f'I could not find osu! profile with username {self.name.value}. Please ask observer wards to verify you manually.')
+            return False
+
+        verified_role = guild.get_role(788409376598917171)
+        russian_role = guild.get_role(1238609813102006435)
+        ranked_role = guild.get_role(795277624309055509)
+
+        saveUser(user.id, new_user_data.user.id)
+        user.add_roles(verified_role)
+        if (new_user_data.is_russian):
+            user.add_roles(russian_role)
+        if (new_user_data.is_ranked):
+            user.add_roles(ranked_role)
+
+        await interaction.response.send_message(f'You have been verified and your discord account is now linked with {self.name.value} osu! profile.')
+
+    async def on_error(self, interaction: discord.Interaction):
+        await interaction.response.send_message('Oops! Something went wrong. Please ask observer wards to verify you manually.')
+
+
 @tree.command(name = "osu_user", description = "Get osu! profile information. Available modes are osu, catch, taiko, mania")
 async def self(interaction: discord.Interaction, name: str="", mode: str=""):
-
     query = name
-    
     if query == "":
         user_id = getUser(interaction.user.id)
         if user_id == "ERROR":
@@ -356,38 +390,11 @@ async def self(interaction: discord.Interaction, name: str="", mode: str=""):
 
 @tree.command(name = "osu_set_profile", description = "Assings the given osu! profile to your Discord account")
 async def self(interaction: discord.Interaction, name: str):
-
-    guild = interaction.guild
-    channel = interaction.channel
-
-    # THIS CODE IS SPECIFIC TO FROSKYA'S KINDERGARTEN
-
-    if (guild.id == 788166617308987416 and channel.id == 788404299784912907):
-        new_user_data = app.osu.api.checkUserRoles(name)
-        verified_role = guild.get_role(788409376598917171)
-        russian_role = guild.get_role(1238609813102006435)
-        ranked_role = guild.get_role(795277624309055509)
-
-        if (new_user_data == None):
-            await interaction.response.defer()
-            await interaction.followup.send(f"I could not find your profile or something went wrong.")
-            return False
-        else:
-            saveUser(interaction.user.id, new_user_data.user.id)
-            interaction.user.add_roles(verified_role)
-            if (new_user_data.is_russian):
-                interaction.user.add_roles(russian_role)
-            if (new_user_data.is_ranked):
-                interaction.user.add_roles(ranked_role)
-            await interaction.response.defer()
-            await interaction.followup.send(f"Welcome to our server!", embed=app.responses.User.prepare(new_user_data.user))
-
-    else:
-        user = await app.osu.api.getOsuUser(name)
-        saveUser(interaction.user.id, user.id)
-        await interaction.response.defer()
-        await interaction.followup.send(f"Your Discord account is now connected with your osu! profile {user.username}")
-        return True
+    user = await app.osu.api.getOsuUser(name)
+    saveUser(interaction.user.id, user.id)
+    await interaction.response.defer()
+    await interaction.followup.send(f"Your Discord account is now connected with your osu! profile {user.username}")
+    return True
 
 @tree.command(name = "osu_recent_score", description = "Get information about your latest score")
 async def self(interaction: discord.Interaction):
