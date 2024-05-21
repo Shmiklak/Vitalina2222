@@ -31,7 +31,7 @@ async def isRussian(query):
 
 async def checkUserRoles(query):
     try: 
-        user = getOsuUser(query)
+        user = await getOsuUser(query)
         is_russian = user.country_code in ["RU", "KZ", "UA", "BY"]
         is_ranked = user.ranked_beatmapset_count > 0
 
