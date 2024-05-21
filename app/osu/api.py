@@ -28,3 +28,17 @@ async def isRussian(query):
         return True
     else:
         return False
+
+async def checkUserRoles(query):
+    try: 
+        user = getOsuUser(query)
+        is_russian = user.country_code in ["RU", "KZ", "UA", "BY"]
+        is_ranked = user.ranked_beatmapset_count > 0
+
+        return {
+            "user": user,
+            "is_russian": is_russian,
+            "is_ranked": is_ranked
+        }
+    except:
+        return None

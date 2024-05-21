@@ -249,7 +249,7 @@ class Vitalina(discord.Client):
             return True
 
         if message.content.lower() == "виталина, у нас новенькие":
-            await message.channel.send(f"Привет! Основная информация по тому или иному каналу указана в его шапке! Также не забудь заглянуть в <#882372059928354887>. Также не забудь заглянуть в <#882372059928354887> Если у тебя возникли вопросы, не стесняйся задавать их в чатике, а теперь - вперед навстречу ярким эмоциям! <:pepeBusiness:1036987708456845391>")
+            await message.channel.send(f"Привет! Основная информация по тому или иному каналу указана в его шапке! Также не забудь заглянуть в <#882372059928354887>. Если у тебя возникли вопросы, не стесняйся задавать их в чатике, а теперь - вперед навстречу ярким эмоциям! <:pepeBusiness:1036987708456845391>")
             return True
 
         if message.content.lower() == "виталина, ранкни карту":
@@ -324,8 +324,9 @@ class Vitalina(discord.Client):
             return True
         
     async def on_member_join(self, member):
-        channel = self.get_channel(788404299784912907)
-        await channel.send(f"Hello {member.mention}! Welcome to our server. Please read <#882372059928354887> before you proceed. Once you read it, send your osu! profile link so <@&937077604203262023> can verify you.<:pepeBusiness:1036987708456845391>")
+        if (member.guild.id == 788166617308987416):
+            channel = self.get_channel(788404299784912907)
+            await channel.send(f"Hello {member.mention}! Welcome to our server. Please read <#882372059928354887> before you proceed. Once you read it, please use `/osu_set_profile` command to get verified. In case you don't have a valid osu! account or have been restricted please contact Observer Wards to manually verify you.<:pepeBusiness:1036987708456845391>")
 
         
 
@@ -343,7 +344,6 @@ async def self(interaction: discord.Interaction, name: str="", mode: str=""):
     
     if query == "":
         user_id = getUser(interaction.user.id)
-
         if user_id == "ERROR":
             await interaction.response.send_message("You don't have an osu! profile assigned to your Discord account, neither provided username. Please set your own profile using /osu_set_profile")
             return False
@@ -356,10 +356,38 @@ async def self(interaction: discord.Interaction, name: str="", mode: str=""):
 
 @tree.command(name = "osu_set_profile", description = "Assings the given osu! profile to your Discord account")
 async def self(interaction: discord.Interaction, name: str):
-    user = await app.osu.api.getOsuUser(name)
-    saveUser(interaction.user.id, user.id)
-    await interaction.response.defer()
-    await interaction.followup.send(f"Your Discord account is now connected with your osu! profile {user.username}")
+
+    guild = interaction.guild
+    channel = interaction.channel
+
+    # THIS CODE IS SPECIFIC TO FROSKYA'S KINDERGARTEN
+
+    if (guild.id == 788166617308987416 and channel.id == 788404299784912907):
+        new_user_data = app.osu.api.checkUserRoles(name)
+        verified_role = guild.get_role(788409376598917171)
+        russian_role = guild.get_role(1238609813102006435)
+        ranked_role = guild.get_role(795277624309055509)
+
+        if (new_user_data == None):
+            await interaction.response.defer()
+            await interaction.followup.send(f"I could not find your profile or something went wrong.")
+            return False
+        else:
+            saveUser(interaction.user.id, new_user_data.user.id)
+            interaction.user.add_roles(verified_role)
+            if (new_user_data.is_russian):
+                interaction.user.add_roles(russian_role)
+            if (new_user_data.is_ranked):
+                interaction.user.add_roles(ranked_role)
+            await interaction.response.defer()
+            await interaction.followup.send(f"Welcome to our server!", embed=app.responses.User.prepare(new_user_data.user))
+
+    else:
+        user = await app.osu.api.getOsuUser(name)
+        saveUser(interaction.user.id, user.id)
+        await interaction.response.defer()
+        await interaction.followup.send(f"Your Discord account is now connected with your osu! profile {user.username}")
+        return True
 
 @tree.command(name = "osu_recent_score", description = "Get information about your latest score")
 async def self(interaction: discord.Interaction):
