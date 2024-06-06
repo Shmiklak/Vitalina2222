@@ -403,7 +403,7 @@ class MangoVerificationModal(discord.ui.Modal, title='Verification'):
         await user.add_roles(verified_role)
         await user.edit(nick=self.name.value)
 
-        channel = self.get_channel(1248172190923362345)
+        channel = interaction.guild.get_channel(1248172190923362345)
         await channel.send(f"You have been verified and your discord account is now linked with {self.name.value} osu! profile. <:pepeBusiness:1036987708456845391>", view=MangoVerificationButton())
 
     async def on_error(self, interaction: discord.Interaction):
