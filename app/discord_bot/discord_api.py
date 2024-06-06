@@ -327,6 +327,9 @@ class Vitalina(discord.Client):
         if (member.guild.id == 788166617308987416):
             channel = self.get_channel(788404299784912907)
             await channel.send(f"Hello {member.mention}! Welcome to our server. Please read <#882372059928354887> before you proceed. Once you read it, please use button below to get verified. In case you don't have a valid osu! account or have been restricted please contact Observer Wards to manually verify you.<:pepeBusiness:1036987708456845391>", view=VerificationButton())
+        if (member.guild.id == 1248156231462424728):
+            channel = self.get_channel(1248172190923362345)
+            await channel.send(f"Hello {member.mention}! Welcome to our server. Please use button below to get verified. In case you don't have a valid osu! account or have been restricted please contact server administrators to manually verify you.<:pepeBusiness:1036987708456845391>", view=MangoVerificationButton())
             
 intents = discord.Intents.default()
 intents.message_content = True
@@ -372,6 +375,38 @@ class VerificationModal(discord.ui.Modal, title='Verification'):
 
     async def on_error(self, interaction: discord.Interaction):
         await interaction.response.send_message('Oops! Something went wrong. Please ask observer wards to verify you manually.')
+
+
+class MangoVerificationButton(discord.ui.View):
+    @discord.ui.button(label="Verify", style=discord.ButtonStyle.primary)
+    async def button_callback(self, interaction: discord.Interaction, button):
+        await interaction.response.send_modal(MangoVerificationModal())
+
+class MangoVerificationModal(discord.ui.Modal, title='Verification'):
+    name = discord.ui.TextInput(
+        label='Your osu! profile username',
+        placeholder='Please ensure to enter valid osu! name'
+    )
+
+    async def on_submit(self, interaction: discord.Interaction):
+        guild = interaction.guild
+        user = interaction.user
+
+        new_user_data = await app.osu.api.checkUserRoles(self.name.value)
+
+        if (new_user_data == None):
+            await interaction.response.send_message(f'I could not find osu! profile with username {self.name.value}. Please ask server administrators to verify you manually.')
+            return False
+
+        verified_role = guild.get_role(1248172223404048466)
+        saveUser(user.id, new_user_data["user"].id)
+        await user.add_roles(verified_role)
+        await user.edit(nick=self.name.value)
+
+        await interaction.response.send_message(f'You have been verified and your discord account is now linked with {self.name.value} osu! profile.')
+
+    async def on_error(self, interaction: discord.Interaction):
+        await interaction.response.send_message('Oops! Something went wrong. Please ask server administrators to verify you manually.')
 
 
 @tree.command(name = "osu_user", description = "Get osu! profile information. Available modes are osu, catch, taiko, mania")
