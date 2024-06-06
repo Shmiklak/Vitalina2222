@@ -271,8 +271,9 @@ class Vitalina(discord.Client):
             return True
             
         if rare_events > 960 or (vitalina_current_mode == "VERY_AGRESSIVE" and rare_events > 760):
-            await message.channel.send(selectRandomMessage())
-            return True
+            if message.guild.id != 1248156231462424728:
+                await message.channel.send(selectRandomMessage())
+                return True
 
         if '1187685558382772254' in message.content:
             if random_event > 80:
@@ -296,6 +297,15 @@ class Vitalina(discord.Client):
             ###                                 ###
             ### СЛУЧАЙНЫЕ СОБЫТИЯ               ###
             ###                                 ###
+
+            if message.guild.id == 1248156231462424728:
+                if random_event > 65 or vitalina_current_mode == "PASSIVE":
+                    gif = selectRandomGif()
+                    await message.channel.send(gif)
+                    return True
+                bot_response = await chatgpt_response(message.content, True)
+                await message.channel.send(bot_response)
+                return True
 
             if random_event < 15 or vitalina_current_mode == "AGRESSIVE" or vitalina_current_mode == "VERY_AGRESSIVE":
                 await message.channel.send(selectRandomMessage())

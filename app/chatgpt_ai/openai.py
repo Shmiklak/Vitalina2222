@@ -12,10 +12,12 @@ client = AsyncOpenAI(
 with open('vitalina.txt', encoding = 'utf-8', mode = 'r') as file:
     vitalina = file.read()
 
+with open('vitalina_en.txt', encoding = 'utf-8', mode = 'r') as file:
+    vitalina_en = file.read()
 
 vitalina_history = []
 
-async def chatgpt_response(prompt):
+async def chatgpt_response(prompt, force_english=False):
     
     global vitalina_history
 
@@ -38,7 +40,10 @@ async def chatgpt_response(prompt):
         "name": "users"
     })
 
-    messages_to_send = [{"role": "system","content": vitalina,"name": "System"}] + vitalina_history
+    if force_english:
+        messages_to_send = [{"role": "system","content": vitalina_en,"name": "System"}] + vitalina_history
+    else:
+        messages_to_send = [{"role": "system","content": vitalina,"name": "System"}] + vitalina_history
 
     response = await client.chat.completions.create(
         messages=messages_to_send,
