@@ -403,7 +403,8 @@ class MangoVerificationModal(discord.ui.Modal, title='Verification'):
         await user.add_roles(verified_role)
         await user.edit(nick=self.name.value)
 
-        await interaction.response.send_message(f'You have been verified and your discord account is now linked with {self.name.value} osu! profile.')
+        channel = self.get_channel(1248172190923362345)
+        await channel.send(f"You have been verified and your discord account is now linked with {self.name.value} osu! profile. <:pepeBusiness:1036987708456845391>", view=MangoVerificationButton())
 
     async def on_error(self, interaction: discord.Interaction):
         await interaction.response.send_message('Oops! Something went wrong. Please ask server administrators to verify you manually.')
