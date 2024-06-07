@@ -286,7 +286,7 @@ class Vitalina(discord.Client):
             if text in message.content.lower():
                 trigger_vitalina = True
 
-        if message.type == discord.MessageType.reply and message.guild.id != 1248156231462424728::
+        if message.type == discord.MessageType.reply:
             reference = await message.channel.fetch_message(message.reference.message_id)
 
             if reference.author.id == self.user.id:
