@@ -91,6 +91,10 @@ class Vitalina(discord.Client):
             await message.channel.send("Пидора ответ.")
             return True
 
+        if (message.content.lower() == "я" or message.content.lower() == "ya") and vitalina_current_mode != "SLEEP":
+            await message.channel.send("Головка от хуя.")
+            return True
+
         random_event = random.randint(0, 100)
         rare_events = random.randint(0, 1000)
         print(bcolors.OKGREEN, "ТЕКУЩАЯ ВЕРОЯТНОСТЬ: ", random_event, bcolors.ENDC)
