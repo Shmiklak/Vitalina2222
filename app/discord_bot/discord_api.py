@@ -34,7 +34,7 @@ required_consecutive_messages = 3
 # AI_ONLY
 #
 
-vitalina_current_mode = "AI_ONLY"
+vitalina_current_mode = "NORMAL"
 
 vitalina_ignore_list = []
 
