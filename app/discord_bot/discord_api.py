@@ -123,7 +123,7 @@ class Vitalina(discord.Client):
                 return True
         
         if message.content.lower() == "виталина, история":
-            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
                 bot_response = await chatgpt_response("MARVOLLO_HISTORY")
                 await message.channel.send(bot_response)
                 return True
@@ -132,7 +132,7 @@ class Vitalina(discord.Client):
                 return True
             
         if message.content.lower() == "виталина, сброс":
-            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
                 bot_response = await chatgpt_response("MARVOLLO_RESET")
                 await message.channel.send(f"Виталина была сброшена с моста.<:pepeBusiness:1036987708456845391>")
                 return True
@@ -141,7 +141,7 @@ class Vitalina(discord.Client):
                 return True
         
         if message.content.lower() == "виталина, обычный режим":
-            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
                 vitalina_current_mode = "NORMAL"
                 await message.channel.send("Изменила режим работы на обычный.")
                 return True
@@ -150,7 +150,7 @@ class Vitalina(discord.Client):
                 return True
         
         if message.content.lower() == "виталина, пассивный режим":
-            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
                 vitalina_current_mode = "PASSIVE"
                 await message.channel.send("Изменила режим работы на пассивный.")
                 return True
@@ -159,7 +159,7 @@ class Vitalina(discord.Client):
                 return True
             
         if message.content.lower() == "виталина, агрессивный режим":
-            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
                 vitalina_current_mode = "AGRESSIVE"
                 await message.channel.send("Изменила режим работы на агрессивный.")
                 return True
@@ -168,7 +168,7 @@ class Vitalina(discord.Client):
                 return True
             
         if message.content.lower() == "виталина, режим резня":
-            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
                 vitalina_current_mode = "VERY_AGRESSIVE"
                 await message.channel.send("РЕЗНЯ")
                 return True
@@ -177,7 +177,7 @@ class Vitalina(discord.Client):
                 return True
             
         if message.content.lower() == "виталина, режим спячка":
-            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
                 vitalina_current_mode = "SLEEP"
                 await message.channel.send("Всем спокойной ночи!")
                 return True
@@ -186,7 +186,7 @@ class Vitalina(discord.Client):
                 return True
 
         if message.content.lower() == "виталина, умный режим":
-            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
                 vitalina_current_mode = "AI_ONLY"
                 await message.channel.send("Теперь я знаю всё на этом свете.")
                 return True
@@ -195,7 +195,7 @@ class Vitalina(discord.Client):
                 return True
             
         if message.content.lower() == "виталина, русские":
-            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
                 role = message.guild.get_role(1238609813102006435)
                 await message.channel.send("Начинаю чё то делать")
                 for member in message.guild.members:
@@ -222,7 +222,7 @@ class Vitalina(discord.Client):
         ### виталина, отправляем сообщение|CHANNEL_ID|MESSAGE
 
         if "виталина, отправляем сообщение" in message.content.lower():
-            if message.author.id == 138957703853768705 or message.author.id == 395117543406436353 or message.author.id == 143343954816008192:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
                 res = message.content.split('|')
                 channel = res[1]
                 content = res[2]
