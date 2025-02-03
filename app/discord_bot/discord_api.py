@@ -48,7 +48,7 @@ class Vitalina(discord.Client):
         return True
 
     async def on_message(self, message):
-        if message.author == self.user or message.author.id in vitalina_ignore_list:
+        if message.author == self.user or message.author.id in vitalina_ignore_list or message.author.bot:
             return False
         
         if isinstance(message.channel, discord.DMChannel):
