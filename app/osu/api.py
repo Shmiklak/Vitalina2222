@@ -35,7 +35,7 @@ async def isRanked(query):
     except:
         return False
     
-    return user.ranked_beatmapset_count >= 2
+    return user.ranked_beatmapset_count >= 3
 
 async def checkUserRoles(query):
     try: 

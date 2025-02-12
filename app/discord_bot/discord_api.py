@@ -223,7 +223,7 @@ class Vitalina(discord.Client):
 
         if message.content.lower() == "настюха, красные мрази":
             if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
-                role = message.guild.get_role(1339195341211176991)
+                role = message.guild.get_role(1339198126858174535)
                 await message.channel.send("Начинаю чё то делать")
                 for member in message.guild.members:
                     member_name = member.display_name
