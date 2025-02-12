@@ -28,6 +28,14 @@ async def isRussian(query):
         return True
     else:
         return False
+    
+async def isRanked(query):
+    try:
+        user = await getOsuUser(query)
+    except:
+        return False
+    
+    return user.ranked_beatmapset_count >= 2
 
 async def checkUserRoles(query):
     try: 
