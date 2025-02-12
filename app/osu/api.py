@@ -33,9 +33,19 @@ async def isRanked(query):
     try:
         user = await getOsuUser(query)
     except:
-        return False
+        return None
     
-    return user.ranked_beatmapset_count >= 3
+    is_bro = user.ranked_beatmapset_count >= 1
+    is_master = user.ranked_beatmapset_count >= 3
+    is_expert = user.ranked_beatmapset_count >= 5
+    is_DADDY = user.ranked_beatmapset_count >= 10
+
+    return {
+        "is_bro": is_bro,
+        "is_master": is_master,
+        "is_expert": is_expert,
+        "is_DADDY": is_DADDY
+    }
 
 async def checkUserRoles(query):
     try: 

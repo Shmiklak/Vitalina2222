@@ -223,7 +223,12 @@ class Vitalina(discord.Client):
 
         if message.content.lower() == "настюха, красные мрази":
             if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
-                role = message.guild.get_role(1339198126858174535)
+                
+                daddy_role = message.guild.get_role(1339215989849591871)
+                expert_role = message.guild.get_role(1339215913924296726)
+                master_role = message.guild.get_role(1339215759611662379)
+                bro_role = message.guild.get_role(1339215624542621718)
+
                 await message.channel.send("Начинаю чё то делать")
                 for member in message.guild.members:
                     member_name = member.display_name
@@ -231,13 +236,23 @@ class Vitalina(discord.Client):
                     if member.nick != None:
                         member_name = member.nick
 
-                    if await app.osu.api.isRanked(member_name):
-                        try:
-                            await member.add_roles(role)
-                            await message.channel.send("Этот еблан больше не красный " + member_name)
-                        except:
-                            await message.channel.send("Я сломалась при попытке чё то сделать с " + member_name)
-                            continue
+                    new_user_data = await app.osu.api.isRanked(member_name)
+
+                    if (new_user_data == None):
+                        await message.channel.send("не нашла тебя или я сломалась " + member_name)
+                        continue
+                    if (new_user_data["is_bro"]):
+                        await member.add_roles(bro_role)
+                        await message.channel.send("ранкед бро " + member_name)
+                    if (new_user_data["is_master"]):
+                        await member.add_roles(master_role)
+                        await message.channel.send("мастер грандмастер " + member_name)
+                    if (new_user_data["is_expert"]):
+                        await member.add_roles(expert_role)
+                        await message.channel.send("эксперт про макс " + member_name)
+                    if (new_user_data["is_expert"]):
+                        await member.add_roles(daddy_role)
+                        await message.channel.send("ТРАХНИ МЕНЯ ПАПОЧКА " + member_name)
 
                 await message.channel.send("начинаем буллить красных")
                 return True
