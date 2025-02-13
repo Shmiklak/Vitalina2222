@@ -83,20 +83,21 @@ class Vitalina(discord.Client):
             recent_messages = []
             consecutive_messages = 0
     
-        if (message.content.lower() == "да" or message.content.lower() == "da") and vitalina_current_mode != "SLEEP":
+        if (message.content.lower() == "да" or message.content.lower() == "da") and vitalina_current_mode != "SLEEP" and pizda_event == 1:
             await message.channel.send("https://cdn.discordapp.com/attachments/1204044194499403776/1204394774107525161/wk7pnm_dqkY.png?ex=65d4930a&is=65c21e0a&hm=361e66ff592612704a2aa619b202244a073079dff3c425929f46bf9d7e318703&")
             return True
         
-        if (message.content.lower() == "нет" or message.content.lower() == "net") and vitalina_current_mode != "SLEEP":
+        if (message.content.lower() == "нет" or message.content.lower() == "net") and vitalina_current_mode != "SLEEP" and pizda_event == 1:
             await message.channel.send("Пидора ответ.")
             return True
 
-        if (message.content.lower() == "я" or message.content.lower() == "ya") and vitalina_current_mode != "SLEEP":
+        if (message.content.lower() == "я" or message.content.lower() == "ya") and vitalina_current_mode != "SLEEP" and pizda_event == 1:
             await message.channel.send("Головка от хуя.")
             return True
 
         random_event = random.randint(0, 100)
         rare_events = random.randint(0, 1000)
+        pizda_event = random.randint(0,2)
         print(bcolors.OKGREEN, "ТЕКУЩАЯ ВЕРОЯТНОСТЬ: ", random_event, bcolors.ENDC)
         print(bcolors.OKGREEN, "ТЕКУЩАЯ РЕДКАЯ ВЕРОЯТНОСТЬ: ", rare_events, bcolors.ENDC)
 
