@@ -359,10 +359,10 @@ class Vitalina(discord.Client):
                 await message.channel.send(selectRandomMessage())
                 return True
 
-            # if random_event == 100:
-            #     user = selectRandomUser()
-            #     await message.channel.send(f"Я устала, за меня ответит <@" + user + ">.")
-            #     return True
+            if random_event == 50:
+                user = selectRandomUser()
+                await message.channel.send(f"Я устала, за меня ответит <@" + user + ">.")
+                return True
             
             if random_event == 100:
                 await message.channel.send(f"Собакам слова не давали.")
