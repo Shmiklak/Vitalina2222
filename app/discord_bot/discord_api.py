@@ -377,7 +377,7 @@ class Vitalina(discord.Client):
                 await message.channel.send(selectRandomMessage())
                 return True
 
-            if random_event == 50:
+            if random_event == 52:
                 user = selectRandomUser()
                 await message.channel.send(f"Я устала, за меня ответит <@" + user + ">.")
                 return True
