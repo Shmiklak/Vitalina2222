@@ -123,3 +123,20 @@ def getUser(discord_id):
     if user == None:
         return "ERROR"
     return user[0]
+
+def signUpUserForGiveaway(discord_id):
+    user = dbSelect(f"SELECT discord_id FROM giveaway_users WHERE discord_id={discord_id}")
+
+    if user != None:
+        return False
+
+    dbInsert("INSERT INTO giveaway_users (discord_id) VALUES (%s)", [discord_id])
+    return True
+
+def truncateGiveaway():
+    dbUpdate("TRUNCATE TABLE giveaway_users")
+    return True
+
+def selectRandomGiveawayUser():
+    user = dbSelect("SELECT discord_id FROM giveaway_users ORDER BY random() LIMIT 1")
+    return user[0]

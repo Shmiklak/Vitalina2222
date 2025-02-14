@@ -4,7 +4,7 @@ import os
 import random
 from app.chatgpt_ai.openai import chatgpt_response
 from app.vitalina_utilities.utilities import selectRandomGif, bcolors, selectRandomVitas, selectRandomShrine, selectRandomUser
-from app.database.database import dbInsert, selectRandomMessage, saveUser, getUser
+from app.database.database import dbInsert, selectRandomMessage, saveUser, getUser, signUpUserForGiveaway, truncateGiveaway, selectRandomGiveawayUser
 import app.osu.api
 import app.responses.User
 import app.responses.Score
@@ -280,6 +280,24 @@ class Vitalina(discord.Client):
         if vitalina_current_mode == "SLEEP":
             return True
         
+        if message.content.lower() == "виталина, начинаем раздачу саппортеров на спавне":
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 391901940457537538:
+                truncateGiveaway()
+                await message.channel.send("We are starting a giveaway of one month of osu! supporter. Please use the button below to sign up.<:pepeBusiness:1036987708456845391>", view=GiveawayButton())
+                return True
+            else:
+                await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                return True
+
+        if message.content.lower() == "виталина, определяем победителя саппортера":
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 391901940457537538:
+                user_id = selectRandomGiveawayUser()
+                await message.channel.send("Hey, <@" + str(user_id) + ">, congratulations! You just won one month of osu! supporter. Please contact nemidnight for details.<:pepeBusiness:1036987708456845391>")
+                return True
+            else:
+                await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                return True
+        
         ###                                 ###
         ### ОБЩИЕ КОМАНДЫ                   ###
         ###                                 ###
@@ -466,6 +484,13 @@ class MangoVerificationModal(discord.ui.Modal, title='Verification'):
     async def on_error(self, interaction: discord.Interaction):
         await interaction.response.send_message('Oops! Something went wrong. Please ask server administrators to verify you manually.')
 
+class GiveawayButton(discord.ui.View):
+    @discord.ui.button(label="Sign Up", style=discord.ButtonStyle.primary)
+    async def button_callback(self, interaction: discord.Interaction, button):
+        if (signUpUserForGiveaway(interaction.user.id)):
+            await interaction.response.send_message("You have successfully signed up for this giveaway. Please wait for results.", ephemeral=True)
+        else:
+            await interaction.response.send_message("You cannot sign up for a giveaway multiple times. Please wait for results.", ephemeral=True)
 
 @tree.command(name = "osu_user", description = "Get osu! profile information. Available modes are osu, catch, taiko, mania")
 async def self(interaction: discord.Interaction, name: str="", mode: str=""):
