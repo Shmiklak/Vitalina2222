@@ -14,7 +14,7 @@ load_dotenv()
 discord_token = os.getenv('DISCORD_TOKEN')
 discord_client = os.getenv('DISCORD_CLIENT_ID')
 
-vitalina_triggers = ['витал', 'vital', '1187685558382772254', 'гуталин', 'буталин', 'валер', 'valer']
+vitalina_triggers = ['витал', 'vital', '1187685558382772254', 'гуталин', 'буталин', 'оленина']
 
 # if os.getenv("MODE") == "DEV":
     # vitalina_triggers = ['наст', 'nast']
