@@ -31,7 +31,7 @@ async def chatgpt_response(prompt, force_english=False):
     print("Начинаю генерировать ответ...")
 
 
-    if len(vitalina_history) == 10:
+    if len(vitalina_history) == 3:
         vitalina_history.pop(0)
 
     vitalina_history.append({
