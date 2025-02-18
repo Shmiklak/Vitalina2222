@@ -315,8 +315,12 @@ class Vitalina(discord.Client):
             return True
 
         if message.content.lower() == "виталина, у нас новенькие":
-            await message.channel.send(f"Привет! Основная информация по тому или иному каналу указана в его шапке! Также не забудь заглянуть в <#882372059928354887>. Если у тебя возникли вопросы, не стесняйся задавать их в чатике, а теперь - вперед навстречу ярким эмоциям! <:pepeBusiness:1036987708456845391>")
-            return True
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 391901940457537538 or message.author.id == 241663509824405504:
+                await message.channel.send(f"Привет! Основная информация по тому или иному каналу указана в его шапке! Также не забудь заглянуть в <#882372059928354887>. Если у тебя возникли вопросы, не стесняйся задавать их в чатике, а теперь - вперед навстречу ярким эмоциям! <:pepeBusiness:1036987708456845391>")
+                return True
+            else:
+                await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                return True
 
         if message.content.lower() == "виталина, ранкни карту":
             await message.channel.send(f"Конечно, отправь карту в мою очередь: https://docs.google.com/forms/d/e/1FAIpQLSdn1i6C44nSaxSQRyEeL3_jvXrxFn-U0hAfxUkTYIudatmiTA/viewform?usp=sf_link")
