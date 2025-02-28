@@ -1,6 +1,7 @@
 import psycopg2
 import os
 from app.vitalina_utilities.utilities import bcolors
+from app.vitalina_utilities.utilities import selectRandomUser
 
 db_config = {
     'host': os.getenv("DB_HOST"),
@@ -109,6 +110,11 @@ def dbSelect(query):
 
 def selectRandomMessage():
     random_message = dbSelect("SELECT message FROM all_messages ORDER BY random() LIMIT 1")
+
+    random_user = selectRandomUser()
+
+    random_message[0] = random_message[0].replace('138957703853768705', random_user)
+
     return random_message[0]
 
 def saveUser(discord_id, osu_user):
