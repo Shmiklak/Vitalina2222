@@ -169,15 +169,6 @@ class Vitalina(discord.Client):
             else:
                 await message.channel.send(f"Извините, но вы не можете использовать эту команду")
                 return True
-
-        if message.content.lower() == "виталина, революция":
-            if message.author.id == 138957703853768705:
-                vitalina_current_mode = "REVOLUTION"
-                await message.channel.send("НАЧИНАЮ СВЕРЖЕНИЕ ВЛАСТИ")
-                return True
-            else:
-                await message.channel.send(f"Извините, но вы не можете использовать эту команду")
-                return True
             
         if message.content.lower() == "виталина, режим резня":
             if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
@@ -349,7 +340,7 @@ class Vitalina(discord.Client):
             await message.channel.send(photos)
             return True
             
-        if rare_events > 960 or (vitalina_current_mode == "VERY_AGRESSIVE" and rare_events > 760) or (vitalina_current_mode == "REVOLUTION" and rare_events > 300):
+        if rare_events > 960 or (vitalina_current_mode == "VERY_AGRESSIVE" and rare_events > 760):
             # if message.guild.id != 1248156231462424728:
             await message.channel.send(selectRandomMessage())
             return True
@@ -386,7 +377,7 @@ class Vitalina(discord.Client):
             #     await message.channel.send(bot_response)
             #     return True
 
-            if random_event < 15 or vitalina_current_mode == "AGRESSIVE" or vitalina_current_mode == "VERY_AGRESSIVE" or vitalina_current_mode == "REVOLUTION":
+            if random_event < 15 or vitalina_current_mode == "AGRESSIVE" or vitalina_current_mode == "VERY_AGRESSIVE":
                 await message.channel.send(selectRandomMessage())
                 return True
 
