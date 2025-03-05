@@ -67,10 +67,14 @@ async def chatgpt_response(prompt, current_mode="DEFAULT"):
 
     print(response)
 
+    vitalina_response = response.choices[0].message.content
+    vitalina_response = vitalina_response.replace("блин", "бля")
+    vitalina_response = vitalina_response.replace("охрен", "оху")
+
     vitalina_history.append({
         "role": "assistant",
-        "content": response.choices[0].message.content,
+        "content": vitalina_response,
         "name": "Vitalina2222"
     })
 
-    return response.choices[0].message.content + "<:pepeBusiness:1036987708456845391>"
+    return vitalina_response + "<:pepeBusiness:1036987708456845391>"
