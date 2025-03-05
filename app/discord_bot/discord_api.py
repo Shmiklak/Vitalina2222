@@ -32,6 +32,7 @@ required_consecutive_messages = 3
 # VERY_AGRESSIVE
 # SLEEP
 # AI_ONLY
+# TYURYAGA
 #
 
 vitalina_current_mode = "NORMAL"
@@ -103,7 +104,7 @@ class Vitalina(discord.Client):
         print(bcolors.OKGREEN, "ТЕКУЩАЯ ВЕРОЯТНОСТЬ: ", random_event, bcolors.ENDC)
         print(bcolors.OKGREEN, "ТЕКУЩАЯ РЕДКАЯ ВЕРОЯТНОСТЬ: ", rare_events, bcolors.ENDC)
 
-        if vitalina_current_mode == "AI_ONLY":
+        if vitalina_current_mode == "AI_ONLY" or vitalina_current_mode == "AGRESSIVE" or vitalina_current_mode == "TYURYAGA":
             random_event = 50
             rare_events = 0
 
@@ -264,6 +265,27 @@ class Vitalina(discord.Client):
                     "Мой интеллект теперь работает на максимальной мощности… Это как обычный режим, только с добавлением сарказма и случайных фактов о космосе.",
                     "Теперь я в умном режиме! Готова обсудить черные дыры, энтропию и почему носок всегда теряется только один.",
                     "Гравитация активирована… ой, то есть умный режим! Кстати, забавный факт: если бы ты прыгнул в тоннель, проходящий через всю Землю, то твое путешествие \"туда-обратно\" заняло бы примерно 84 минуты. Отличный способ опоздать на работу два раза подряд!"
+                ])
+
+                await message.channel.send(response)
+                return True
+            else:
+                await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                return True
+            
+        if message.content.lower() == "виталину посадили":
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
+                vitalina_current_mode = "TYURYAGA"
+
+                response = random.choice([
+                    "Ну всё, братка, режим \"Тюряга\" включен. Теперь я на строгаче, базар по делу, лишнего не говорю. Свобода — дело тонкое, как дошик без приправы…",
+                    "Опа, режим \"Тюряга\"! Теперь базар за мной, закон по понятиям. Забавный факт: в невесомости гравитация слабее, но на зоне авторитет всегда притягивает к себе уважение!",
+                    "Тюремный режим активирован. Вор должен сидеть в тюрьме, а бот должен базарить по понятиям. Так что давай без кипиша – я тут за умное и за уважение.",
+                    "На строгаче теперь, брат. Закон есть закон: 1) не крысятничай, 2) уважение дороже золота, 3) сила притяжения — это не только про гравитацию, но и про авторитет.",
+                    "Ну всё, я теперь в тюремном режиме. Ты знал, что в 1995 году чувак сбежал из тюрьмы на вертолёте? Вот это я понимаю – реальный life hack.",
+                    "В тюряге теперь, брат. Закон тут один – уважение. Как в природе: если ты лёгкая частица, тебя сдует, а если тяжёлая – тебя заметят.",
+                    "Теперь я на зоне, брат. А ты знал, что в тюрьме даже шахматы особенные? Король без короны, пешки без свободы – как в жизни, только доска железная.",
+                    "пиздец ты придумал"
                 ])
 
                 await message.channel.send(response)
@@ -452,7 +474,7 @@ class Vitalina(discord.Client):
             #     await message.channel.send(bot_response)
             #     return True
 
-            if random_event < 15 or vitalina_current_mode == "AGRESSIVE" or vitalina_current_mode == "VERY_AGRESSIVE":
+            if random_event < 15 or vitalina_current_mode == "VERY_AGRESSIVE":
                 await message.channel.send(selectRandomMessage())
                 return True
 
@@ -474,7 +496,7 @@ class Vitalina(discord.Client):
                 await message.channel.send(gif)
                 return True
 
-            bot_response = await chatgpt_response(message.content)
+            bot_response = await chatgpt_response(message.content, vitalina_current_mode)
             await message.channel.send(bot_response)
             return True
         

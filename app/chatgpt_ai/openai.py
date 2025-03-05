@@ -10,14 +10,20 @@ client = AsyncOpenAI(
 )
 
 with open('vitalina.txt', encoding = 'utf-8', mode = 'r') as file:
-    vitalina = file.read()
+    vitalina_default = file.read()
 
-with open('vitalina_en.txt', encoding = 'utf-8', mode = 'r') as file:
-    vitalina_en = file.read()
+with open('vitalina_agressive.txt', encoding = 'utf-8', mode = 'r') as file:
+    vitalina_agressive = file.read()
+
+with open('vitalina_smart.txt', encoding = 'utf-8', mode = 'r') as file:
+    vitalina_smart = file.read()
+
+with open('vitalina_tyuryaga.txt', encoding = 'utf-8', mode = 'r') as file:
+    vitalina_tyuryaga = file.read()
 
 vitalina_history = []
 
-async def chatgpt_response(prompt, force_english=False):
+async def chatgpt_response(prompt, current_mode="DEFAULT",):
     
     global vitalina_history
 
@@ -30,7 +36,6 @@ async def chatgpt_response(prompt, force_english=False):
 
     print("Начинаю генерировать ответ...")
 
-
     if len(vitalina_history) == 3:
         vitalina_history.pop(0)
 
@@ -40,10 +45,18 @@ async def chatgpt_response(prompt, force_english=False):
         "name": "users"
     })
 
-    if force_english:
-        messages_to_send = [{"role": "system","content": vitalina_en,"name": "System"}] + vitalina_history
-    else:
-        messages_to_send = [{"role": "system","content": vitalina,"name": "System"}] + vitalina_history
+    match current_mode:
+        case "NORMAL":
+            vitalina = vitalina_default
+        case "AGRESSIVE":
+            vitalina = vitalina_agressive
+        case "AI_ONLY":
+            vitalina = vitalina_smart
+        case "TYURYAGA":
+            vitalina = vitalina_tyuryaga
+    
+
+    messages_to_send = [{"role": "system","content": vitalina,"name": "System"}] + vitalina_history
 
     response = await client.chat.completions.create(
         messages=messages_to_send,
