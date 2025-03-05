@@ -39,12 +39,35 @@ vitalina_current_mode = "NORMAL"
 
 vitalina_ignore_list = []
 
+
+with open('assets/default.png', 'rb') as image:
+    default_avatar = image.read()
+
+with open('assets/passive.jpg', 'rb') as image:
+    passive_avatar = image.read()
+
+with open('assets/tyuryaga.jpg', 'rb') as image:
+    tyuryaga_avatar = image.read()
+
+with open('assets/agressive.jpg', 'rb') as image:
+    agressive_avatar = image.read()
+
+with open('assets/smart.jpg', 'rb') as image:
+    smart_avatar = image.read()
+
+with open('assets/reznya.jpg', 'rb') as image:
+    reznya_avatar = image.read()
+
+with open('assets/sleep.jpg', 'rb') as image:
+    sleep_avatar = image.read()
+
 class Vitalina(discord.Client):
     
     async def on_ready(self):
         await tree.sync()
         await self.change_presence(activity=discord.Game(name="osu!"))
         discord_channel = self.get_channel(int(1216656123239731220))
+        await self.user.edit(avatar=default_avatar)
         await discord_channel.send("Виталина успешно запустилась.")
         return True
 
@@ -159,6 +182,8 @@ class Vitalina(discord.Client):
                     "дейкорчик выеби меня"
                 ])
 
+                await self.user.edit(avatar=default_avatar)
+
                 await message.channel.send(response)
                 return True
             else:
@@ -180,6 +205,8 @@ class Vitalina(discord.Client):
                     "дейкорчик выеби меня"
                 ])
 
+                await self.user.edit(avatar=passive_avatar)
+
                 await message.channel.send(response)
                 return True
             else:
@@ -200,6 +227,8 @@ class Vitalina(discord.Client):
                     "Фурри чмошники",
                     "дейкорчик выеби меня"
                 ])
+
+                await self.user.edit(avatar=agressive_avatar)
 
                 await message.channel.send(response)
                 return True
@@ -224,6 +253,8 @@ class Vitalina(discord.Client):
                     "ДЕЙКОРЧИК ВЫЕБИ МЕНЯ"
                 ])
 
+                await self.user.edit(avatar=reznya_avatar)
+
                 await message.channel.send(response)
                 return True
             else:
@@ -244,6 +275,8 @@ class Vitalina(discord.Client):
                     "*звуки храпа*",
                     "Я ушла спать, но помните, я всегда вижу вас.",
                 ])
+
+                await self.user.edit(avatar=sleep_avatar)
 
                 await message.channel.send(response)
                 return True
@@ -267,6 +300,8 @@ class Vitalina(discord.Client):
                     "Гравитация активирована… ой, то есть умный режим! Кстати, забавный факт: если бы ты прыгнул в тоннель, проходящий через всю Землю, то твое путешествие \"туда-обратно\" заняло бы примерно 84 минуты. Отличный способ опоздать на работу два раза подряд!"
                 ])
 
+                await self.user.edit(avatar=smart_avatar)
+
                 await message.channel.send(response)
                 return True
             else:
@@ -285,8 +320,11 @@ class Vitalina(discord.Client):
                     "Ну всё, я теперь в тюремном режиме. Ты знал, что в 1995 году чувак сбежал из тюрьмы на вертолёте? Вот это я понимаю – реальный life hack.",
                     "В тюряге теперь, брат. Закон тут один – уважение. Как в природе: если ты лёгкая частица, тебя сдует, а если тяжёлая – тебя заметят.",
                     "Теперь я на зоне, брат. А ты знал, что в тюрьме даже шахматы особенные? Король без короны, пешки без свободы – как в жизни, только доска железная.",
+                    "https://cdn.discordapp.com/attachments/143474037731885057/1240749221246664824/doc_2024-05-16_22-32-27-ezgif.com-video-to-gif-converter.gif?ex=67c95002&is=67c7fe82&hm=342a5fe4367dceffac0132958099d57833db6238323483066e06b037d505718c&",
                     "пиздец ты придумал"
                 ])
+
+                await self.user.edit(avatar=tyuryaga_avatar)
 
                 await message.channel.send(response)
                 return True
