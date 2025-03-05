@@ -60,9 +60,9 @@ async def chatgpt_response(prompt, current_mode="DEFAULT",):
 
     response = await client.chat.completions.create(
         messages=messages_to_send,
-        model="gpt-3.5-turbo",
+        model="gpt-4o-mini",
         max_tokens=300,
-        temperature=0.4
+        temperature=1
     )
 
     print(response)
