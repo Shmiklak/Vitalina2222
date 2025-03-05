@@ -70,6 +70,7 @@ async def chatgpt_response(prompt, current_mode="DEFAULT"):
     vitalina_response = response.choices[0].message.content
     vitalina_response = vitalina_response.replace("блин", "бля")
     vitalina_response = vitalina_response.replace("охрен", "оху")
+    vitalina_response = vitalina_response.replace("Vitalina2222:", "")
 
     vitalina_history.append({
         "role": "assistant",
