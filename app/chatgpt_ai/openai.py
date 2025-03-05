@@ -23,7 +23,7 @@ with open('vitalina_tyuryaga.txt', encoding = 'utf-8', mode = 'r') as file:
 
 vitalina_history = []
 
-async def chatgpt_response(prompt, current_mode="DEFAULT",):
+async def chatgpt_response(prompt, current_mode="DEFAULT"):
     
     global vitalina_history
 
@@ -56,7 +56,7 @@ async def chatgpt_response(prompt, current_mode="DEFAULT",):
             vitalina = vitalina_tyuryaga
     
 
-    messages_to_send = [{"role": "system","content": vitalina,"name": "System"}] + vitalina_history
+    messages_to_send = [{"role": "developer","content": vitalina,"name": "Shmiklak"}] + vitalina_history
 
     response = await client.chat.completions.create(
         messages=messages_to_send,
