@@ -70,7 +70,7 @@ async def chatgpt_response(prompt, current_mode="DEFAULT",):
     vitalina_history.append({
         "role": "assistant",
         "content": response.choices[0].message.content,
-        "name": " "
+        "name": "Vitalina2222"
     })
 
     return response.choices[0].message.content + "<:pepeBusiness:1036987708456845391>"
