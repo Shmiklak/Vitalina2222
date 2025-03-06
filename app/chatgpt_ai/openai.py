@@ -21,6 +21,9 @@ with open('vitalina_smart.txt', encoding = 'utf-8', mode = 'r') as file:
 with open('vitalina_tyuryaga.txt', encoding = 'utf-8', mode = 'r') as file:
     vitalina_tyuryaga = file.read()
 
+with open('vitalina_daily.txt', encoding = 'utf-8', mode = 'r') as file:
+    vitalina_daily = file.read()
+
 vitalina_history = []
 
 async def chatgpt_response(prompt, current_mode="DEFAULT"):
@@ -54,6 +57,8 @@ async def chatgpt_response(prompt, current_mode="DEFAULT"):
             vitalina = vitalina_smart
         case "TYURYAGA":
             vitalina = vitalina_tyuryaga
+        case "DAILY":
+            vitalina = vitalina_daily
     
 
     messages_to_send = [{"role": "developer","content": vitalina,"name": "Shmiklak"}] + vitalina_history

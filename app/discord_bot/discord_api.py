@@ -33,6 +33,7 @@ required_consecutive_messages = 3
 # SLEEP
 # AI_ONLY
 # TYURYAGA
+# DAILY
 #
 
 vitalina_current_mode = "NORMAL"
@@ -127,7 +128,7 @@ class Vitalina(discord.Client):
         print(bcolors.OKGREEN, "ТЕКУЩАЯ ВЕРОЯТНОСТЬ: ", random_event, bcolors.ENDC)
         print(bcolors.OKGREEN, "ТЕКУЩАЯ РЕДКАЯ ВЕРОЯТНОСТЬ: ", rare_events, bcolors.ENDC)
 
-        if vitalina_current_mode == "AI_ONLY" or vitalina_current_mode == "AGRESSIVE" or vitalina_current_mode == "TYURYAGA":
+        if vitalina_current_mode == "AI_ONLY" or vitalina_current_mode == "AGRESSIVE" or vitalina_current_mode == "TYURYAGA" or vitalina_current_mode == "DAILY":
             random_event = 50
             rare_events = 0
 
@@ -326,6 +327,20 @@ class Vitalina(discord.Client):
 
                 await self.user.edit(avatar=tyuryaga_avatar)
 
+                await message.channel.send(response)
+                return True
+            else:
+                await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                return True
+
+        if message.content.lower() == "виталина, начинаем дневной ивент":
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
+                vitalina_current_mode = "DAILY"
+
+                response = random.choice([
+                    "пиздец ты придумал",
+                    "интересно что нас ждёт сегодня..."
+                ])
                 await message.channel.send(response)
                 return True
             else:
