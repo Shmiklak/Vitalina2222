@@ -416,7 +416,7 @@ class Vitalina(discord.Client):
         ### виталина, отправляем сообщение|CHANNEL_ID|MESSAGE
 
         if "виталина, отправляем сообщение" in message.content.lower():
-            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584:
                 res = message.content.split('|')
                 channel = res[1]
                 content = res[2]
