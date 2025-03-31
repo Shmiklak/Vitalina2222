@@ -14,7 +14,9 @@ load_dotenv()
 discord_token = os.getenv('DISCORD_TOKEN')
 discord_client = os.getenv('DISCORD_CLIENT_ID')
 
-vitalina_triggers = ['витал', 'vital', '1187685558382772254', 'гуталин', 'буталин', 'оленина']
+vitalina_triggers = ['шмик', 'shmik', '1187685558382772254', 'достон']
+
+# vitalina_triggers = ['витал', 'vital', '1187685558382772254', 'гуталин', 'буталин', 'оленина']
 
 # if os.getenv("MODE") == "DEV":
     # vitalina_triggers = ['наст', 'nast']
@@ -61,6 +63,9 @@ with open('assets/reznya.jpg', 'rb') as image:
 
 with open('assets/sleep.jpg', 'rb') as image:
     sleep_avatar = image.read()
+
+with open('assets/shmiklak.jpeg', 'rb') as image:
+    shmiklak_avatar = image.read()
 
 class Vitalina(discord.Client):
     
@@ -142,7 +147,7 @@ class Vitalina(discord.Client):
         ### СИСТЕМНЫЕ КОМАНДЫ ДЛЯ ШМИКЛАКА  ###
         ###                                 ###
 
-        if message.content.lower() == "виталина, дейлики":
+        if message.content.lower() == "шмиклак, дейлики":
             if message.author.id == 138957703853768705:
                 await message.channel.send(f"<@304470215733936148> сделай дейлики шмиклаку пожалуйста")
                 return True
@@ -150,7 +155,7 @@ class Vitalina(discord.Client):
                 await message.channel.send(f"Извините, но вы не можете использовать эту команду")
                 return True
         
-        if message.content.lower() == "виталина, история":
+        if message.content.lower() == "шмиклак, история":
             if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584:
                 bot_response = await chatgpt_response("MARVOLLO_HISTORY")
                 await message.channel.send(bot_response)
@@ -159,10 +164,10 @@ class Vitalina(discord.Client):
                 await message.channel.send(f"Извините, но вы не можете использовать эту команду")
                 return True
             
-        if message.content.lower() == "виталина, сброс":
+        if message.content.lower() == "шмиклак, сброс":
             if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584:
                 bot_response = await chatgpt_response("MARVOLLO_RESET")
-                await message.channel.send(f"Виталина была сброшена с моста.<:pepeBusiness:1036987708456845391>")
+                await message.channel.send(f"шмиклак был сброшен с моста.<:pepeBusiness:1036987708456845391>")
                 return True
             else:
                 await message.channel.send(f"Извините, но вы не можете использовать эту команду")
@@ -341,6 +346,9 @@ class Vitalina(discord.Client):
                     "пиздец ты придумал",
                     "интересно что нас ждёт сегодня..."
                 ])
+
+                await self.user.edit(avatar=shmiklak_avatar)
+
                 await message.channel.send(response)
                 return True
             else:
@@ -456,15 +464,15 @@ class Vitalina(discord.Client):
             await message.channel.send(f"О, конечно! Совсем недавно я закончила две свои карты. Можешь оценить? https://cdn.discordapp.com/attachments/1187704983651631174/1188428153299943534/MORGENSHTERN_-_SEL_DEDA.osz https://cdn.discordapp.com/attachments/1187704983651631174/1188428257851363328/Team_Grimoire_-_C18H27NO3.osz")
             return True
 
-        if message.content.lower() == "виталина, голос":
+        if message.content.lower() == "шмиклак, голос":
             await message.channel.send(f"Пушистый здряв")
             return True
 
-        if message.content.lower() == "виталина, что ты умеешь?":
+        if message.content.lower() == "шмиклак, что ты умеешь?":
             await message.channel.send(f"Привет! Я могу отвечать на вопросы, поддерживать беседу и просто развлекать.")
             return True
 
-        if message.content.lower() == "виталина, у нас новенькие":
+        if message.content.lower() == "шмиклак, у нас новенькие":
             if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 391901940457537538 or message.author.id == 241663509824405504:
                 await message.channel.send(f"Эй, новенькие, слушайте меня внимательно! Если вы хотите выжить на этом сервере, то лучше сразу учиться у меня, поняли? Не теряйте времени на глупости, а лучше следуйте моим советам, иначе вас тут быстро разнесут. Основная информация по тому или иному каналу указана в его шапке, также не забудь заглянуть в  <#882372059928354887>! Если у тебя возникли вопросы, не стесняйся задавать их в чатике, а теперь - вперед навстречу ярким эмоциям! <:pepeBusiness:1036987708456845391>")
                 return True
@@ -472,20 +480,20 @@ class Vitalina(discord.Client):
                 await message.channel.send(f"Извините, но вы не можете использовать эту команду")
                 return True
 
-        if message.content.lower() == "виталина, ранкни карту":
+        if message.content.lower() == "шмиклак, ранкни карту":
             await message.channel.send(f"Конечно, отправь карту в мою очередь: https://docs.google.com/forms/d/e/1FAIpQLSdn1i6C44nSaxSQRyEeL3_jvXrxFn-U0hAfxUkTYIudatmiTA/viewform?usp=sf_link")
             return True
 
-        if message.content.lower() == "виталина, скинь свой твиттер":
+        if message.content.lower() == "шмиклак, скинь свой твиттер":
             await message.channel.send(f"Держи! - https://twitter.com/vitalina2222?s=21&t=z8Z3tXn69AOEOpiRpmFttg")
             return True
 
-        if message.content.lower() == "виталина, скинь смешнявку":
+        if message.content.lower() == "шмиклак, скинь смешнявку":
             shrine = selectRandomShrine()
             await message.channel.send(shrine)
             return True
 
-        if message.content.lower() == "виталина, витас":
+        if message.content.lower() == "шмиклак, витас":
             photos = selectRandomVitas()
             await message.channel.send(photos)
             return True
