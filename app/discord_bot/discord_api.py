@@ -64,7 +64,7 @@ with open('assets/reznya.jpg', 'rb') as image:
 with open('assets/sleep.jpg', 'rb') as image:
     sleep_avatar = image.read()
 
-with open('assets/nemi.jpg', 'rb') as image:
+with open('assets/nemijpg.jpg', 'rb') as image:
     shmiklak_avatar = image.read()
 
 class Vitalina(discord.Client):
