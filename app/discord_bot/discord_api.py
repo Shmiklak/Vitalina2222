@@ -14,7 +14,7 @@ load_dotenv()
 discord_token = os.getenv('DISCORD_TOKEN')
 discord_client = os.getenv('DISCORD_CLIENT_ID')
 
-vitalina_triggers = ['немид', 'nemid', '1187685558382772254', 'айдар']
+vitalina_triggers = ['шмик', 'shmik', '1187685558382772254', 'достон']
 
 # vitalina_triggers = ['витал', 'vital', '1187685558382772254', 'гуталин', 'буталин', 'оленина']
 
@@ -64,7 +64,7 @@ with open('assets/reznya.jpg', 'rb') as image:
 with open('assets/sleep.jpg', 'rb') as image:
     sleep_avatar = image.read()
 
-with open('assets/nemi.jpg', 'rb') as image:
+with open('assets/shmiklak.jpeg', 'rb') as image:
     shmiklak_avatar = image.read()
 
 class Vitalina(discord.Client):
