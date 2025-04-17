@@ -151,7 +151,7 @@ class Vitalina(discord.Client):
                 return True
         
         if message.content.lower() == "виталина, история":
-            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538 or message.author.id == 138957703853768705 or message.author.id == 241663509824405504:
                 bot_response = await chatgpt_response("MARVOLLO_HISTORY")
                 await message.channel.send(bot_response)
                 return True
@@ -160,7 +160,7 @@ class Vitalina(discord.Client):
                 return True
             
         if message.content.lower() == "виталина, сброс":
-            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538 or message.author.id == 138957703853768705 or message.author.id == 241663509824405504:
                 bot_response = await chatgpt_response("MARVOLLO_RESET")
                 await message.channel.send(f"Виталина была сброшена с моста.<:pepeBusiness:1036987708456845391>")
                 return True
@@ -169,7 +169,7 @@ class Vitalina(discord.Client):
                 return True
         
         if message.content.lower() == "виталина, обычный режим":
-            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538 or message.author.id == 138957703853768705 or message.author.id == 241663509824405504:
                 vitalina_current_mode = "NORMAL"
 
                 response = random.choice([
@@ -192,7 +192,7 @@ class Vitalina(discord.Client):
                 return True
         
         if message.content.lower() == "виталина, пассивный режим":
-            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538 or message.author.id == 138957703853768705 or message.author.id == 241663509824405504:
                 vitalina_current_mode = "PASSIVE"
 
                 response = random.choice([
@@ -215,7 +215,7 @@ class Vitalina(discord.Client):
                 return True
             
         if message.content.lower() == "виталина, агрессивный режим":
-            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538 or message.author.id == 138957703853768705 or message.author.id == 241663509824405504:
                 vitalina_current_mode = "AGRESSIVE"
 
                 response = random.choice([
@@ -238,7 +238,7 @@ class Vitalina(discord.Client):
                 return True
             
         if message.content.lower() == "виталина, режим резня":
-            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538 or message.author.id == 138957703853768705 or message.author.id == 241663509824405504:
                 vitalina_current_mode = "VERY_AGRESSIVE"
 
                 response = random.choice([
@@ -263,7 +263,7 @@ class Vitalina(discord.Client):
                 return True
             
         if message.content.lower() == "виталина, режим спячка":
-            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538 or message.author.id == 138957703853768705 or message.author.id == 241663509824405504:
                 vitalina_current_mode = "SLEEP"
 
                 response = random.choice([
@@ -286,7 +286,7 @@ class Vitalina(discord.Client):
                 return True
 
         if message.content.lower() == "виталина, умный режим":
-            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538 or message.author.id == 138957703853768705 or message.author.id == 241663509824405504:
                 vitalina_current_mode = "AI_ONLY"
 
                 response = random.choice([
@@ -310,7 +310,7 @@ class Vitalina(discord.Client):
                 return True
             
         if message.content.lower() == "виталину посадили":
-            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538 or message.author.id == 138957703853768705 or message.author.id == 241663509824405504:
                 vitalina_current_mode = "TYURYAGA"
 
                 response = random.choice([
@@ -334,7 +334,7 @@ class Vitalina(discord.Client):
                 return True
 
         if message.content.lower() == "виталина, начинаем дневной ивент":
-            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538 or message.author.id == 138957703853768705 or message.author.id == 241663509824405504:
                 vitalina_current_mode = "DAILY"
 
                 response = random.choice([
@@ -431,7 +431,7 @@ class Vitalina(discord.Client):
             return True
         
         if message.content.lower() == "виталина, начинаем раздачу саппортеров на спавне":
-            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 391901940457537538:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 391901940457537538 or message.author.id == 138957703853768705 or message.author.id == 241663509824405504:
                 # truncateGiveaway()
                 await message.channel.send("We are starting a giveaway of one month of osu! supporter. Please use the button below to sign up.<:pepeBusiness:1036987708456845391>", view=GiveawayButton(timeout=None))
                 return True
@@ -440,7 +440,7 @@ class Vitalina(discord.Client):
                 return True
 
         if message.content.lower() == "виталина, определяем победителя саппортера":
-            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 391901940457537538:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 391901940457537538 or message.author.id == 138957703853768705 or message.author.id == 241663509824405504:
                 user_id = selectRandomGiveawayUser()
                 await message.channel.send("Hey, <@" + str(user_id) + ">, congratulations! You just won one month of osu! supporter. Please contact nemidnight for details.<:pepeBusiness:1036987708456845391>")
                 return True
@@ -465,7 +465,7 @@ class Vitalina(discord.Client):
             return True
 
         if message.content.lower() == "виталина, у нас новенькие":
-            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 391901940457537538 or message.author.id == 241663509824405504:
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 391901940457537538 or message.author.id == 138957703853768705 or message.author.id == 241663509824405504 or message.author.id == 241663509824405504:
                 await message.channel.send(f"Эй, новенькие, слушайте меня внимательно! Если вы хотите выжить на этом сервере, то лучше сразу учиться у меня, поняли? Не теряйте времени на глупости, а лучше следуйте моим советам, иначе вас тут быстро разнесут. Основная информация по тому или иному каналу указана в его шапке, также не забудь заглянуть в  <#882372059928354887>! Если у тебя возникли вопросы, не стесняйся задавать их в чатике, а теперь - вперед навстречу ярким эмоциям! <:pepeBusiness:1036987708456845391>")
                 return True
             else:
