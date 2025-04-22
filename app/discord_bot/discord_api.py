@@ -432,7 +432,7 @@ class Vitalina(discord.Client):
         
         if message.content.lower() == "виталина, начинаем раздачу саппортеров на спавне":
             if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 391901940457537538 or message.author.id == 138957703853768705 or message.author.id == 241663509824405504:
-                # truncateGiveaway()
+                truncateGiveaway()
                 await message.channel.send("We are starting a giveaway of one month of osu! supporter. Please use the button below to sign up.<:pepeBusiness:1036987708456845391>", view=GiveawayButton(timeout=None))
                 return True
             else:
