@@ -132,8 +132,8 @@ class Vitalina(discord.Client):
             random_event = 50
             rare_events = 0
 
-        if message.author.id == 143343954816008192:
-            # if random_event == 100:
+        if message.author.id == 662608589499924491:
+            if random_event == 100:
 
                 response = random.choice([
                     "https://tenor.com/view/mother-sgnila-cute-dance-moves-bear-gif-16312770",
