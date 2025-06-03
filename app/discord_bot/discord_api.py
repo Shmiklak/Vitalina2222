@@ -194,19 +194,9 @@ class Vitalina(discord.Client):
                 await message.channel.send(response)
                 return True
 
-        if message.author.id == 304470215733936148:
-            if random_event == 100:
-
-                response = random.choice([
-                    "дейкорчик выеби меня"
-                ])
-
-                await message.channel.send(response)
-                return True
-
 
         if random_event == 100:
-            daddy_role = message.guild.get_role(1339215989849591871)
+            daddy_role = message.guild.get_role(1339215624542621718)
 
             if daddy_role not in message.author.roles:
                 await message.channel.send(f"https://marvollo.s-ul.eu/aBNWJmWF")
