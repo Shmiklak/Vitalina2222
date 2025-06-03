@@ -179,7 +179,6 @@ class Vitalina(discord.Client):
 
                 esponse = random.choice([
                     "https://lh5.googleusercontent.com/proxy/xG-UcsMIL_sofruXntp4qwnzdjRwvKBJqHKAQ4p6uUXkJ1ddKTNmjbjJTw3RtgFGKOrsaj65gFHHmtB-enJnx0OH9ZYb",
-                    "https://i.pinimg.com/736x/d8/75/b4/d875b48ee15ce43da54ac16359d9858b.jpg"
                 ])
 
                 await message.channel.send(response)
