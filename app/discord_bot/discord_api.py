@@ -205,7 +205,7 @@ class Vitalina(discord.Client):
                 return True
 
 
-        if random_event > 0:
+        if random_event == 100:
             daddy_role = message.guild.get_role(1339215989849591871)
 
             if daddy_role not in message.author.roles:
