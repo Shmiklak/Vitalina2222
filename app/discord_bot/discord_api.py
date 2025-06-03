@@ -8,6 +8,7 @@ from app.database.database import dbInsert, selectRandomMessage, saveUser, getUs
 import app.osu.api
 import app.responses.User
 import app.responses.Score
+import app.vitalina_utilities.memegen
 
 load_dotenv()
 
@@ -754,3 +755,16 @@ async def self(interaction: discord.Interaction):
     beatmap = await app.osu.api.getBeatmap(score[0].beatmap.id)
     await interaction.response.defer()
     await interaction.followup.send(f"**Recent play for {score[0]._user.username}**", embed=app.responses.Score.prepare(score[0], beatmap))
+
+@tree.command(name = "generate_image", description = "Generate a random meme")
+async def self(interaction: discord.Interaction, text: str):
+    base_image = app.vitalina_utilities.memegen.get_random_image()
+    final_image = app.vitalina_utilities.memegen.add_text_to_image(base_image, meme_text)
+    img_bytes = BytesIO()
+    final_image.save(img_bytes, format='PNG')
+    img_bytes.seek(0)
+    file = discord.File(img_bytes, filename="meme.png")
+
+    await interaction.response.defer()
+    await interaction.followup.send(file)
+    return True
