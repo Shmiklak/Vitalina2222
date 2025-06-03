@@ -134,7 +134,19 @@ class Vitalina(discord.Client):
 
         if message.author.id == 662608589499924491:
             if random_event == 100:
-                await message.channel.send(f"https://tenor.com/view/mother-sgnila-cute-dance-moves-bear-gif-16312770")
+
+                response = random.choice([
+                    "https://tenor.com/view/mother-sgnila-cute-dance-moves-bear-gif-16312770",
+                    "https://tenor.com/view/%D0%BC%D0%B0%D1%82%D1%8C-gif-20664796",
+                    "https://tenor.com/view/%D1%81%D0%B3%D0%BD%D0%B8%D0%B2%D1%88%D0%B0%D1%8F%D0%BC%D0%B0%D1%82%D1%8C-%D1%81%D0%B3%D0%BD%D0%B8%D0%BB%D0%B0-%D0%BC%D0%B0%D1%82%D1%8C-gif-27596187",
+                    "https://tenor.com/view/dead-dance-gif-24921725",
+                    "https://tenor.com/view/%D0%BC%D0%B0%D1%82%D1%8C%D1%81%D0%B3%D0%BD%D0%B8%D0%BB%D0%B0-gif-26581212",
+                    "https://tenor.com/view/qotic-dance-mother-mama-gif-20781245",
+                    "https://tenor.com/view/mother-imyourfather-tekken-gif-26462893",
+                    "https://tenor.com/view/your-mother-%D0%BC%D0%BD%D0%B5%D1%82%D0%B2%D0%BE%D1%8F%D0%BC%D0%B0%D0%BC%D0%B0%D1%87%D0%B0%D1%81%D1%8B%D0%BF%D0%BE%D0%B4%D0%B0%D1%80%D0%B8%D0%BB%D0%B0-cat-gif-26986305"
+                ])
+
+                await message.channel.send(response)
                 return True
 
 
