@@ -149,6 +149,42 @@ class Vitalina(discord.Client):
                 await message.channel.send(response)
                 return True
 
+        if message.author.id == 1379513046967521391:
+            if random_event == 100:
+
+                esponse = random.choice([
+                    "https://i.pinimg.com/564x/e6/25/0c/e6250ca744d67bcff00afb323609ff18.jpg",
+                    "https://i.pinimg.com/564x/a4/d3/3a/a4d33a7e21e55d73f784488abc3169e6.jpg",
+                    "https://lh3.googleusercontent.com/proxy/HnSVVrKAThNQe9nm_DASxyNFiMNPCIYWP85krWrb_joC3yLFk_fF5fB4syTb4LiTce3qDgXp6sljQw14rYtw7n_GrGUd2HTqmw",
+                ])
+
+                await message.channel.send(response)
+                return True
+
+        if message.author.id == 391901940457537538:
+            if random_event == 100:
+
+                esponse = random.choice([
+                    "https://www.meme-arsenal.com/memes/1f8f8fbb6afedb317071d11cc8c7c1b7.jpg",
+                    "https://memchik.ru//images/memes/5a8f036db1c7e305522611f8.jpg",
+                    "https://kartinkivsem.ru/img/s-dnem-rozhdeniya/s-dnem-rozhdeniya-2-ajdar.jpg",
+                    "https://pozdravko.ru/resources/postcards/otkrytka-s-dnem-rozhdeniya-Aidar-01.jpg"
+                ])
+
+                await message.channel.send(response)
+                return True
+
+        if message.author.id == 143343954816008192:
+            if random_event == 100:
+
+                esponse = random.choice([
+                    "https://lh5.googleusercontent.com/proxy/xG-UcsMIL_sofruXntp4qwnzdjRwvKBJqHKAQ4p6uUXkJ1ddKTNmjbjJTw3RtgFGKOrsaj65gFHHmtB-enJnx0OH9ZYb",
+                    "https://i.pinimg.com/736x/d8/75/b4/d875b48ee15ce43da54ac16359d9858b.jpg"
+                ])
+
+                await message.channel.send(response)
+                return True
+
 
         ###                                 ###
         ### СИСТЕМНЫЕ КОМАНДЫ ДЛЯ ШМИКЛАКА  ###
@@ -502,6 +538,10 @@ class Vitalina(discord.Client):
             await message.channel.send(photos)
             return True
             
+        if rare_events == 1000:
+            await message.channel.send(f"давно <@395117543406436353> не пинговали")
+            return True
+
         if rare_events > 960 or (vitalina_current_mode == "VERY_AGRESSIVE" and rare_events > 760):
             # if message.guild.id != 1248156231462424728:
             await message.channel.send(selectRandomMessage())
