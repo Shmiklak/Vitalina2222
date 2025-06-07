@@ -152,7 +152,7 @@ class Vitalina(discord.Client):
         if message.author.id == 1379513046967521391 or message.author.id == 305361927415136258:
             if random_event == 100:
 
-                esponse = random.choice([
+                response = random.choice([
                     "https://i.pinimg.com/564x/e6/25/0c/e6250ca744d67bcff00afb323609ff18.jpg",
                     "https://i.pinimg.com/564x/a4/d3/3a/a4d33a7e21e55d73f784488abc3169e6.jpg",
                     "https://lh3.googleusercontent.com/proxy/HnSVVrKAThNQe9nm_DASxyNFiMNPCIYWP85krWrb_joC3yLFk_fF5fB4syTb4LiTce3qDgXp6sljQw14rYtw7n_GrGUd2HTqmw",
@@ -164,7 +164,7 @@ class Vitalina(discord.Client):
         if message.author.id == 391901940457537538:
             if random_event == 100:
 
-                esponse = random.choice([
+                response = random.choice([
                     "https://www.meme-arsenal.com/memes/1f8f8fbb6afedb317071d11cc8c7c1b7.jpg",
                     "https://memchik.ru//images/memes/5a8f036db1c7e305522611f8.jpg",
                     "https://kartinkivsem.ru/img/s-dnem-rozhdeniya/s-dnem-rozhdeniya-2-ajdar.jpg",
@@ -177,7 +177,7 @@ class Vitalina(discord.Client):
         if message.author.id == 143343954816008192:
             if random_event == 100:
 
-                esponse = random.choice([
+                response = random.choice([
                     "https://lh5.googleusercontent.com/proxy/xG-UcsMIL_sofruXntp4qwnzdjRwvKBJqHKAQ4p6uUXkJ1ddKTNmjbjJTw3RtgFGKOrsaj65gFHHmtB-enJnx0OH9ZYb",
                 ])
 
@@ -195,11 +195,19 @@ class Vitalina(discord.Client):
                 return True
 
 
-        if random_event == 100:
+        if rare_events >= 980:
             daddy_role = message.guild.get_role(1339215624542621718)
 
             if daddy_role not in message.author.roles:
-                await message.channel.send(f"https://marvollo.s-ul.eu/aBNWJmWF")
+
+                response = random.choice([
+                    "https://marvollo.s-ul.eu/aBNWJmWF",
+                    "https://images-ext-1.discordapp.net/external/4aDwWaJipvD8FZP4denC-BU8zLS_YqtF1xPWeE7uqNY/https/media.tenor.com/DkHUzyURh5QAAAPo/lagosta.mp4",
+                    "https://tenor.com/view/lobster-dance-flamenco-tango-ocean-gif-9807163",
+                    "https://tenor.com/view/giantlobster-ddeonggae-eating-mukbang-realsound-gif-11281857943509536185",
+                    "https://tenor.com/view/lobster-gif-5924168115397577703"
+                ])
+                await message.channel.send(response)
                 return True        
 
 
