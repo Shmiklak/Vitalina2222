@@ -149,7 +149,7 @@ class Vitalina(discord.Client):
                 await message.channel.send(response)
                 return True
 
-        if message.author.id == 1379513046967521391 or message.author.id == 305361927415136258:
+        if message.author.id == 1379513046967521391 or message.author.id == 305361927415136258 or message.author.id == 1107231272473993296:
             if random_event == 100:
 
                 response = random.choice([
