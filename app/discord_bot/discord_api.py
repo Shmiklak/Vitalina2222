@@ -202,7 +202,7 @@ class Vitalina(discord.Client):
 
                 response = random.choice([
                     "https://marvollo.s-ul.eu/aBNWJmWF",
-                    "https://images-ext-1.discordapp.net/external/4aDwWaJipvD8FZP4denC-BU8zLS_YqtF1xPWeE7uqNY/https/media.tenor.com/DkHUzyURh5QAAAPo/lagosta.mp4",
+                    "https://tenor.com/view/lagosta-gif-25545862",
                     "https://tenor.com/view/lobster-dance-flamenco-tango-ocean-gif-9807163",
                     "https://tenor.com/view/giantlobster-ddeonggae-eating-mukbang-realsound-gif-11281857943509536185",
                     "https://tenor.com/view/lobster-gif-5924168115397577703"
