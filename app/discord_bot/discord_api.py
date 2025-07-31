@@ -579,7 +579,8 @@ class Vitalina(discord.Client):
 
         if message.content.lower() == "виталина, тест":
             beatmapsets = await app.osu.api.getBeatmaps()
-            await message.channel.send(beatmapsets)
+            print(beatmapsets)
+            await message.channel.send("check console")
             return True
         
         trigger_vitalina = False
