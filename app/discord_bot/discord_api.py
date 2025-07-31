@@ -652,7 +652,12 @@ async def recentlyRankedBeatmaps(bot):
     beatmapsets = await app.osu.api.getBeatmaps()
     guild = bot.get_guild(788166617308987416)
     members = guild.members
-    print(guild)
+    channel = bot.get_channel(1187681198005309442)
+    
+    for member in members:
+        for beatmap in beatmapsets.beatmapsets:
+            if (beatmap.creator == member.display_name or beatmap.creator == member.nick):
+                channel.send_message(member.display_name)
 
 tree = discord.app_commands.CommandTree(client)
 
