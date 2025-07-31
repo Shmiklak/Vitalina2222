@@ -578,8 +578,7 @@ class Vitalina(discord.Client):
                 return True 
 
         if message.content.lower() == "виталина, тест":
-            beatmapsets = await app.osu.api.getBeatmaps()
-            print(beatmapsets)
+            recentlyRankedBeatmaps(self)
             await message.channel.send("check console")
             return True
         
@@ -648,6 +647,11 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 client = Vitalina(intents=intents)
+
+async def recentlyRankedBeatmaps(bot):
+    beatmapsets = await app.osu.api.getBeatmaps()
+    members = bot.get_guild(788166617308987416).members
+    print(members)
 
 tree = discord.app_commands.CommandTree(client)
 
