@@ -650,9 +650,9 @@ client = Vitalina(intents=intents)
 
 async def recentlyRankedBeatmaps(bot):
     beatmapsets = await app.osu.api.getBeatmaps()
-    guild = await bot.get_guild(788166617308987416)
-    members = guild.members
-    print(members)
+    guild = bot.get_guild(788166617308987416)
+    # members = guild.members
+    print(guild)
 
 tree = discord.app_commands.CommandTree(client)
 
