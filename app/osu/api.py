@@ -24,7 +24,7 @@ async def isRussian(query):
     except:
         return False
     
-    if user.country_code in ["RU", "KZ", "UA", "BY"]:
+    if user.country_code in ["RU", "KZ", "UA", "BY", "UZ"]:
         return True
     else:
         return False

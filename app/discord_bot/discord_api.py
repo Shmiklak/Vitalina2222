@@ -657,7 +657,8 @@ async def recentlyRankedBeatmaps(bot):
     for member in members:
         for beatmap in beatmapsets:
             if (beatmap.creator == member.display_name or beatmap.creator == member.nick):
-                await channel.send(member.display_name)
+                if (await app.osu.api.isRussian(beatmap.creator)):
+                    await channel.send(f"{member.mention} поздравляю с ранкедом, хуеглотина!", embed=app.responses.Beatmap(beatmap))
 
 tree = discord.app_commands.CommandTree(client)
 
