@@ -73,7 +73,7 @@ class Vitalina(discord.Client):
         await self.user.edit(avatar=default_avatar)
         await discord_channel.send("Виталина успешно запустилась.")
         while True:
-            recentlyRankedBeatmaps(self)
+            await recentlyRankedBeatmaps(self)
             time.sleep(3600)
         return True
 
