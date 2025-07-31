@@ -580,10 +580,6 @@ class Vitalina(discord.Client):
             if random_event > 80:
                 await message.channel.send(f"https://tenor.com/view/chungus-pinged-ben-shapiro-discord-big-gif-21424212")
                 return True
-
-        if message.content.lower() == "виталина, тест":
-            await recentlyRankedBeatmaps(self)
-            return True
         
         trigger_vitalina = False
 
