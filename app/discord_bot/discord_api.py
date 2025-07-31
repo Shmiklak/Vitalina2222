@@ -655,7 +655,7 @@ async def recentlyRankedBeatmaps(bot):
     channel = bot.get_channel(1187681198005309442)
     
     for member in members:
-        for beatmap in beatmapsets.beatmapsets:
+        for beatmap in beatmapsets:
             if (beatmap.creator == member.display_name or beatmap.creator == member.nick):
                 channel.send_message(member.display_name)
 
