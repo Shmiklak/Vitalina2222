@@ -10,6 +10,7 @@ import app.responses.User
 import app.responses.Score
 import app.responses.Beatmap
 import time
+import asyncio
 
 load_dotenv()
 
@@ -72,6 +73,7 @@ class Vitalina(discord.Client):
         discord_channel = self.get_channel(int(1216656123239731220))
         await self.user.edit(avatar=default_avatar)
         await discord_channel.send("Виталина успешно запустилась.")
+        self.bg_task = asyncio.create_task(self.schedule_recently_ranked())
         return True
 
     async def on_message(self, message):
@@ -643,7 +645,16 @@ class Vitalina(discord.Client):
         if (member.guild.id == 1248156231462424728):
             channel = self.get_channel(1248172190923362345)
             await channel.send(f"Hello {member.mention}! Welcome to our server. Please use button below to get verified. In case you don't have a valid osu! account or have been restricted please contact server administrators to manually verify you.<:pepeBusiness:1036987708456845391>", view=MangoVerificationButton())
-            
+
+    async def schedule_recently_ranked(self):
+        await self.wait_until_ready()
+        while not self.is_closed():
+            try:
+                await recentlyRankedBeatmaps(self)
+            except Exception as e:
+                print(f"[ERROR in hourly task] {e}")
+            await asyncio.sleep(3600)
+
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
