@@ -657,7 +657,7 @@ async def recentlyRankedBeatmaps(bot):
     for member in members:
         for beatmap in beatmapsets:
             if (beatmap.creator == member.display_name or beatmap.creator == member.nick):
-                channel.send(member.display_name)
+                await channel.send(member.display_name)
 
 tree = discord.app_commands.CommandTree(client)
 
