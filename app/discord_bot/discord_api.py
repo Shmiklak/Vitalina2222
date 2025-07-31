@@ -665,7 +665,7 @@ async def recentlyRankedBeatmaps(bot):
     beatmapsets = await app.osu.api.getBeatmaps()
     guild = bot.get_guild(788166617308987416)
     members = guild.members
-    channel = bot.get_channel(1187681198005309442)
+    channel = bot.get_channel(809841488052879370)
     admin_channel = bot.get_channel(1216656123239731220)
     
     await admin_channel.send(f"CHECKING RANKED SECTION")
