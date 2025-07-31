@@ -72,9 +72,6 @@ class Vitalina(discord.Client):
         discord_channel = self.get_channel(int(1216656123239731220))
         await self.user.edit(avatar=default_avatar)
         await discord_channel.send("Виталина успешно запустилась.")
-        while True:
-            await recentlyRankedBeatmaps(self)
-            time.sleep(3600)
         return True
 
     async def on_message(self, message):
@@ -581,6 +578,10 @@ class Vitalina(discord.Client):
             if random_event > 80:
                 await message.channel.send(f"https://tenor.com/view/chungus-pinged-ben-shapiro-discord-big-gif-21424212")
                 return True
+
+        if message.content.lower() == "виталина, тест":
+            await recentlyRankedBeatmaps(self)
+            return True
         
         trigger_vitalina = False
 
@@ -648,7 +649,7 @@ intents.message_content = True
 intents.members = True
 client = Vitalina(intents=intents)
 
-latest_ranked_date = None
+global latest_ranked_date = None
 
 async def recentlyRankedBeatmaps(bot):
     beatmapsets = await app.osu.api.getBeatmaps()
