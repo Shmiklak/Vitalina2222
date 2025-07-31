@@ -665,6 +665,7 @@ async def recentlyRankedBeatmaps(bot):
                 if (await app.osu.api.isRussian(beatmap.creator)):
                     if (latest_ranked_date == None or latest_ranked_date < beatmap.ranked_date):
                         await channel.send(f"{member.mention} поздравляю с ранкедом, хуеглотина!", embed=app.responses.Beatmap.prepare(beatmap))
+                        latest_ranked_date = beatmap.ranked_date
                         await admin_channel.send(f"new latest ranked date is {latest_ranked_date}")
 
 tree = discord.app_commands.CommandTree(client)
