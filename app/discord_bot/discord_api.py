@@ -8,6 +8,7 @@ from app.database.database import dbInsert, selectRandomMessage, saveUser, getUs
 import app.osu.api
 import app.responses.User
 import app.responses.Score
+import app.responses.Beatmap
 
 load_dotenv()
 
