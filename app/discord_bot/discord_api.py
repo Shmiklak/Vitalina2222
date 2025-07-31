@@ -649,9 +649,12 @@ intents.message_content = True
 intents.members = True
 client = Vitalina(intents=intents)
 
-global latest_ranked_date = None
+latest_ranked_date = None
 
 async def recentlyRankedBeatmaps(bot):
+
+    global latest_ranked_date
+
     beatmapsets = await app.osu.api.getBeatmaps()
     guild = bot.get_guild(788166617308987416)
     members = guild.members
