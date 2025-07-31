@@ -60,3 +60,11 @@ async def checkUserRoles(query):
         }
     except:
         return None
+
+async def getBeatmaps():
+    try:
+        beatmaps = api.search_beatmapsets(explicit_content="show")
+
+        return beatmaps.beatmapsets
+    except:
+        return None
