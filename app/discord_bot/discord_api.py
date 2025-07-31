@@ -9,6 +9,7 @@ import app.osu.api
 import app.responses.User
 import app.responses.Score
 import app.responses.Beatmap
+import time
 
 load_dotenv()
 
@@ -71,6 +72,9 @@ class Vitalina(discord.Client):
         discord_channel = self.get_channel(int(1216656123239731220))
         await self.user.edit(avatar=default_avatar)
         await discord_channel.send("Виталина успешно запустилась.")
+        while True:
+            recentlyRankedBeatmaps(self)
+            time.sleep(3600)
         return True
 
     async def on_message(self, message):
@@ -576,12 +580,7 @@ class Vitalina(discord.Client):
         if '1187685558382772254' in message.content:
             if random_event > 80:
                 await message.channel.send(f"https://tenor.com/view/chungus-pinged-ben-shapiro-discord-big-gif-21424212")
-                return True 
-
-        if message.content.lower() == "виталина, тест":
-            await recentlyRankedBeatmaps(self)
-            await message.channel.send("check console")
-            return True
+                return True
         
         trigger_vitalina = False
 
@@ -649,17 +648,24 @@ intents.message_content = True
 intents.members = True
 client = Vitalina(intents=intents)
 
+latest_ranked_date = None
+
 async def recentlyRankedBeatmaps(bot):
     beatmapsets = await app.osu.api.getBeatmaps()
     guild = bot.get_guild(788166617308987416)
     members = guild.members
     channel = bot.get_channel(1187681198005309442)
+    admin_channel = bot.get_channel(1216656123239731220)
     
+    await admin_channel.send(f"CHECKING RANKED SECTION")
+
     for member in members:
         for beatmap in beatmapsets:
             if (beatmap.creator == member.display_name or beatmap.creator == member.nick):
                 if (await app.osu.api.isRussian(beatmap.creator)):
-                    await channel.send(f"{member.mention} поздравляю с ранкедом, хуеглотина!", embed=app.responses.Beatmap.prepare(beatmap))
+                    if (latest_ranked_date == None or latest_ranked_date < beatmap.ranked_date):
+                        await channel.send(f"{member.mention} поздравляю с ранкедом, хуеглотина!", embed=app.responses.Beatmap.prepare(beatmap))
+                        await admin_channel.send(f"new latest ranked date is {latest_ranked_date}")
 
 tree = discord.app_commands.CommandTree(client)
 
