@@ -41,7 +41,7 @@ required_consecutive_messages = 3
 
 vitalina_current_mode = "NORMAL"
 
-vitalina_ignore_list = []
+vitalina_ignore_list = [391901940457537538]
 
 
 with open('assets/default.png', 'rb') as image:
