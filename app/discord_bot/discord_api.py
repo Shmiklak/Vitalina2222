@@ -199,7 +199,7 @@ class Vitalina(discord.Client):
                 return True
 
 
-        if rare_events >= 980:
+        if rare_events >= 0:
             daddy_role = message.guild.get_role(1339215624542621718)
             daddy_role_but_cooler = message.guild.get_role(1339215759611662379)
 
