@@ -201,6 +201,7 @@ class Vitalina(discord.Client):
 
         if rare_events >= 980:
             daddy_role = message.guild.get_role(1339215624542621718)
+            daddy_role_but_cooler = message.guild.get_role(1339215759611662379)
 
             if daddy_role not in message.author.roles:
 
@@ -212,7 +213,19 @@ class Vitalina(discord.Client):
                     "https://tenor.com/view/lobster-gif-5924168115397577703"
                 ])
                 await message.channel.send(response)
-                return True        
+                return True 
+            else daddy_role_but_cooler not in message.author.roles:
+                response = random.choice([
+                    "https://marvollo.s-ul.eu/BcBJb9Md",
+                    "https://tenor.com/view/chopping-cabbage-two-plaid-aprons-slice-the-cabbage-thinly-sliced-cabbage-gif-16280635570918459671",
+                    "https://tenor.com/view/samoyed-cabbage-dog-eat-%E8%96%A9%E6%91%A9%E8%80%B6-gif-13150760811535071474",
+                    "https://tenor.com/view/giantlobster-ddeonggae-eating-mukbang-realsound-gif-11281857943509536185",
+                    "https://tenor.com/view/cabbage-burning-gif-14427035827879398986",
+                    "https://tenor.com/view/cat-cabbage-ai-dancing-lettuce-dance-gif-4662145642462330877",
+                    "https://tenor.com/view/ash-cabbage-tob-planker-gif-19650971"
+                ])
+                await message.channel.send(response)
+                return True 
 
 
         ###                                 ###
