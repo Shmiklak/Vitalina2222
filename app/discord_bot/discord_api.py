@@ -214,7 +214,7 @@ class Vitalina(discord.Client):
                 ])
                 await message.channel.send(response)
                 return True 
-            else daddy_role_but_cooler not in message.author.roles:
+            elif daddy_role_but_cooler not in message.author.roles:
                 response = random.choice([
                     "https://marvollo.s-ul.eu/BcBJb9Md",
                     "https://tenor.com/view/chopping-cabbage-two-plaid-aprons-slice-the-cabbage-thinly-sliced-cabbage-gif-16280635570918459671",
