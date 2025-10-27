@@ -36,6 +36,7 @@ required_consecutive_messages = 3
 # SLEEP
 # AI_ONLY
 # TYURYAGA
+# PAFOSNAYA
 # DAILY
 #
 
@@ -55,6 +56,9 @@ with open('assets/tyuryaga.jpg', 'rb') as image:
 
 with open('assets/agressive.jpg', 'rb') as image:
     agressive_avatar = image.read()
+
+with open('assets/pafosnaya.jpg', 'rb') as image:
+    pafosnaya_avatar = image.read()
 
 with open('assets/smart.jpg', 'rb') as image:
     smart_avatar = image.read()
@@ -132,7 +136,7 @@ class Vitalina(discord.Client):
         print(bcolors.OKGREEN, "ТЕКУЩАЯ ВЕРОЯТНОСТЬ: ", random_event, bcolors.ENDC)
         print(bcolors.OKGREEN, "ТЕКУЩАЯ РЕДКАЯ ВЕРОЯТНОСТЬ: ", rare_events, bcolors.ENDC)
 
-        if vitalina_current_mode == "AI_ONLY" or vitalina_current_mode == "AGRESSIVE" or vitalina_current_mode == "TYURYAGA" or vitalina_current_mode == "DAILY":
+        if vitalina_current_mode == "AI_ONLY" or vitalina_current_mode == "AGRESSIVE" or vitalina_current_mode == "TYURYAGA" or vitalina_current_mode == "DAILY" or vitalina_current_mode == "PAFOSNAYA":
             random_event = 50
             rare_events = 0
 
@@ -320,6 +324,29 @@ class Vitalina(discord.Client):
                 ])
 
                 await self.user.edit(avatar=agressive_avatar)
+
+                await message.channel.send(response)
+                return True
+            else:
+                await message.channel.send(f"Извините, но вы не можете использовать эту команду")
+                return True
+
+        if message.content.lower() == "виталина, режим инфоцыганки":
+            if message.author.id == 138957703853768705 or message.author.id == 143343954816008192 or message.author.id == 578908784722968584 or message.author.id == 391901940457537538 or message.author.id == 138957703853768705 or message.author.id == 241663509824405504:
+                vitalina_current_mode = "PAFOSNAYA"
+
+                response = random.choice([
+                    "Хотите подзаработать?",
+                    "Деньги деньги баксы баксы гучи гучи мами мами",
+                    "Сегодня я заработала 67 932 583 рублей за час",
+                    "За деньги да",
+                    "Вам всем пизда.",
+                    "Желаю вам всем такой же жизни как у меня, только не завидуйте кисы",
+                    "Фурри чмошники",
+                    "дейкорчик выеби меня"
+                ])
+
+                await self.user.edit(avatar=pafosnaya_avatar)
 
                 await message.channel.send(response)
                 return True
