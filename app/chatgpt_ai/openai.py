@@ -89,6 +89,6 @@ async def chatgpt_response(prompt, current_mode="DEFAULT"):
     })
 
     if current_mode == "PAFOSNAYA":
-        return vitalina_response + "\nСкачивайте мессенджер Макс, ловит даже на парковке: https://apps.apple.com/uz/app/max-общение-звонки-сервисы/id6739530834"
+        return vitalina_response + "\n\nСкачивайте мессенджер Макс, ловит даже на парковке."
 
     return vitalina_response + "<:pepeBusiness:1036987708456845391>"
