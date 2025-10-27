@@ -715,6 +715,8 @@ async def recentlyRankedBeatmaps(bot):
             if (beatmap.creator == member.display_name or beatmap.creator == member.nick):
                 if (await app.osu.api.isRussian(beatmap.creator)):
                     if (latest_ranked_date == None or latest_ranked_date < beatmap.ranked_date):
+                        if (beatmap.user_id == 15823344):
+                            continue
                         if (beatmap.user_id == 25123849):
                             await channel.send(f"{member.mention} мустаз ранкед ахзахахахахха", embed=app.responses.Beatmap.prepare(beatmap))
                         else:
