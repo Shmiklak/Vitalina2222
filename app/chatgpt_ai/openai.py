@@ -83,7 +83,7 @@ async def chatgpt_response(prompt, current_mode="DEFAULT"):
 
     safety = build_prompt(vitalina)
 
-    messages_to_send = [{"role": "system","content": vitalina}] + vitalina_history
+    messages_to_send = [{"role": "system","content": safety}] + vitalina_history
 
     response = await client.chat.completions.create(
         messages=messages_to_send,
