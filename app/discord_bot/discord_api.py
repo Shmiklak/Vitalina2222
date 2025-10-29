@@ -494,10 +494,11 @@ class Vitalina(discord.Client):
         if message.content.lower() == "настюха, красные мрази":
             if message.author.id == 138957703853768705 or message.author.id == 143343954816008192:
                 
-                daddy_role = message.guild.get_role(1339215989849591871)
+                daddy_role = message.guild.get_role(1433040288334614648)
                 expert_role = message.guild.get_role(1339215913924296726)
                 master_role = message.guild.get_role(1339215759611662379)
                 bro_role = message.guild.get_role(1339215624542621718)
+                god_role = message.guild.get_role(1433039202085245060)
 
                 await message.channel.send("Начинаю чё то делать")
                 for member in message.guild.members:
@@ -520,9 +521,12 @@ class Vitalina(discord.Client):
                     if (new_user_data["is_expert"]):
                         await member.add_roles(expert_role)
                         await message.channel.send("эксперт про макс " + member_name)
-                    if (new_user_data["is_expert"]):
+                    if (new_user_data["is_DADDY"]):
                         await member.add_roles(daddy_role)
                         await message.channel.send("ТРАХНИ МЕНЯ ПАПОЧКА " + member_name)
+                    if (new_user_data["is_god"]):
+                        await member.add_roles(god_role)
+                        await message.channel.send("пиздец тебе делать нехуй мужик " + member_name)
 
                 await message.channel.send("начинаем буллить красных")
                 return True

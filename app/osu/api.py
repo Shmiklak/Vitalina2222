@@ -39,12 +39,14 @@ async def isRanked(query):
     is_master = user.ranked_beatmapset_count >= 3
     is_expert = user.ranked_beatmapset_count >= 5
     is_DADDY = user.ranked_beatmapset_count >= 10
+    is_god = user.ranked_beatmapset_count >= 50
 
     return {
         "is_bro": is_bro,
         "is_master": is_master,
         "is_expert": is_expert,
-        "is_DADDY": is_DADDY
+        "is_DADDY": is_DADDY,
+        "is_god": is_god
     }
 
 async def checkUserRoles(query):
