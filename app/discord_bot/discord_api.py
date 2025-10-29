@@ -719,8 +719,8 @@ async def recentlyRankedBeatmaps(bot):
                             continue
                         if (beatmap.user_id == 25123849):
                             await channel.send(f"{member.mention} мустаз ранкед ахзахахахахха", embed=app.responses.Beatmap.prepare(beatmap))
-                        # else:
-                        #     await channel.send(f"{member.mention} поздравляю с ранкедом, хуеглотина!", embed=app.responses.Beatmap.prepare(beatmap))
+                        else:
+                            await channel.send(f"{member.mention} поздравляю с ранкедом, хуеглотина!", embed=app.responses.Beatmap.prepare(beatmap))
     
     latest_ranked_date = beatmapsets[0].ranked_date
     await admin_channel.send(f"new latest ranked date is {latest_ranked_date}")
